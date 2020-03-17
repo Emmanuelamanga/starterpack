@@ -1,20 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
+            <!-- login acknowledgement -->
+            @if (session('status'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('status') }}
+                </div>
+            @endif
             <div class="card">
-                <div class="card-header">Dashboard</div>
-
+                <div class="card-header">My Packages <a href="#" class="btn btn-sm btn-primary">Request New Package</a> &nbsp; <a href="#">Select existing Package</a></div>
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
+                    No Packages yet 
                 </div>
             </div>
         </div>

@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-welcome
+	<div class="card">
+		<div class="card-body">
+			Welcome 
+		</div>
+		
+	</div>
 @endsection
