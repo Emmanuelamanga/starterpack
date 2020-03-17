@@ -9,15 +9,37 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <!--  Scripts -->
+    <!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <!-- <link rel="dns-prefetch" href="//fonts.gstatic.com"> -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> -->
 
     <!-- Styles -->
+    <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
+
+      <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css"/>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.js"></script>
+
+    <script>
+    $(document).ready(function() {
+            $('#example').DataTable();
+        } );
+    </script>
 </head>
 <body>
     <div id="app">
@@ -33,7 +55,22 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                        @if (Route::has('login'))
+                            @auth
+                                @if (Auth::check()) 
+                                     @if (Auth::user()->id == 1) 
+                                     <!-- admin links -->
+                                     <a class="nav-link" href="{{route('category.index')}}">{{ __('Category') }}</a>
+                                     @else
+                                    <!-- user links -->
+                                    
+                                     @endif
+                                @endif
+                            @endauth
+                        @else
 
+                        @endif
+                        
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -74,7 +111,8 @@
 
         <main class="py-4">
             <div class="container">
-    @yield('content')
+                @include('includes.messages')
+                @yield('content')
             </div>
            
         </main>

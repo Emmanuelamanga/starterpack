@@ -14,7 +14,6 @@ class CreateUsersSeeder extends Seeder
     {
          $user = [
             [
-
                'name'=>'Admin',
                'email'=>'admin@starterpack.com',
                 'is_admin'=>'1',

@@ -25,17 +25,17 @@ Route::get('/submit', function () {
     return view('submit');
 });
 
-Route::post('/submit', function (Request $request) {
-    $data = $request->validate([
-        'title' => 'required|max:255',
-        'url' => 'required|url|max:255',
-        'description' => 'required|max:255',
-    ]);
+// Route::post('/submit', function (Request $request) {
+//     $data = $request->validate([
+//         'title' => 'required|max:255',
+//         'url' => 'required|url|max:255',
+//         'description' => 'required|max:255',
+//     ]);
 
-    $link = tap(new App\Link($data))->save();
+//     $link = tap(new App\Link($data))->save();
 
-    return redirect('/');
-});
+//     return redirect('/');
+// });
 
 // admin users home page 
 Route::get('admin/home', 'HomeController@adminHome')->name('admin.home')->middleware('is_admin');
@@ -43,3 +43,8 @@ Route::get('admin/home', 'HomeController@adminHome')->name('admin.home')->middle
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// categories routes
+Route::resource('category', 'PackageCategoryController');
+// subcategory routes
+Route::resource('subcategory', 'PackageSubcategory');
