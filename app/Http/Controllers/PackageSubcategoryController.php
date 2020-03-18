@@ -6,6 +6,7 @@ use App\PackageSubcategory;
 use App\PackageCategory;
 use Illuminate\Http\Request;
 use Auth;
+use DB;
 
 class PackageSubcategoryController extends Controller
 {
@@ -81,7 +82,9 @@ class PackageSubcategoryController extends Controller
      */
     public function show( $packageSubcategory)
     {
-        //
+         $spc = PackageSubcategory::find($packageSubcategory);
+        // dd($pc);
+         return view('packages.subcategories.show')->with('subcat', $spc);
     }
 
     /**
@@ -90,9 +93,11 @@ class PackageSubcategoryController extends Controller
      * @param  \App\PackageSubcategory  $packageSubcategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(PackageSubcategory $packageSubcategory)
+    public function edit( $packageSubcategory)
     {
-        //
+         $spc = PackageSubcategory::find($packageSubcategory);
+        // dd($pc);
+         return view('packages.subcategories.edit')->with('subcategory', $spc);
     }
 
     /**
@@ -102,9 +107,23 @@ class PackageSubcategoryController extends Controller
      * @param  \App\PackageSubcategory  $packageSubcategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PackageSubcategory $packageSubcategory)
+    public function update(Request $request, $packageSubcategory)
     {
-        //
+         $this->validate($request,
+            [
+                'cat'=>'required',
+                'desc'=>'required'
+            ]);
+
+        DB::table('package_subcategories')
+        ->where('id', $packageSubcategory)
+        ->update([
+             'sub_title' => $request->cat,
+            'sub_desc' => $request->desc,
+            'sub_authorid' => Auth::user()->id,
+        ]);
+
+        return redirect()->route('subcategory.index')->with('success','Sub-Category Updated');
     }
 
     /**
