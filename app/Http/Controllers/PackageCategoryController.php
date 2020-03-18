@@ -122,9 +122,10 @@ class PackageCategoryController extends Controller
      */
     public function destroy($packageCategory)
     { 
-        PackageCategory::find($packageCategory)->delete();
+        
+        PackageCategory::where('id', $packageCategory)->delete();
         // dd($packageCategory);
-        // $pc->id->delete();
+        // // $pc->id->delete();
         return redirect()->route('category.index')->with('success', 'Category Deleted');
     }
 }

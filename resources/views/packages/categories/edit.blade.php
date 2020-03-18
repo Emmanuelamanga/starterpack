@@ -6,9 +6,9 @@
 		EDIT CATEGORY
 	</div>
 	<div class="card-body">
-       <form method="post" action="{{route('category.update', $category->id)}}">
-           @method('PUT')
+       <form method="post" action="{{route('category.update', ['id'=>$category->id])}}">
              @csrf
+              <!-- <input type="hidden" name="id" value = "{{$category->id}}"> -->
             <div class="form-group row">
                 <label for="cat" class="col-md-4 col-form-label text-md-right">{{ __('Category Name') }}</label>
                 <div class="col-md-4">

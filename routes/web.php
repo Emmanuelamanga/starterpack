@@ -4,38 +4,6 @@ use Illuminate\Support\Facades\Route;
 
 use Illuminate\Http\Request;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-Route::get('/', function () {
-     $links = \App\Link::all();
-
-    return view('welcome', ['links' => $links]);
-});
-
-Route::get('/submit', function () {
-    return view('submit');
-});
-
-// Route::post('/submit', function (Request $request) {
-//     $data = $request->validate([
-//         'title' => 'required|max:255',
-//         'url' => 'required|url|max:255',
-//         'description' => 'required|max:255',
-//     ]);
-
-//     $link = tap(new App\Link($data))->save();
-
-//     return redirect('/');
-// });
 
 // admin users home page 
 Route::get('admin/home', 'HomeController@adminHome')->name('admin.home')->middleware('is_admin');
@@ -45,6 +13,17 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 // categories routes
-Route::resource('category', 'PackageCategoryController');
+// Route::resource('category', 'PackageCategoryController', ['except' => 'destroy']);
+// Route::delete('category', ['as' => 'category.destroy', 'uses' => 'PackageCategoryController@destroy']);
+Route::get('/category', 'PackageCategoryController@index')->name('category.index');
+Route::get('/category/{id}/edit','PackageCategoryController@edit')->name('category.edit');
+Route::get('/category/{id}','PackageCategoryController@show')->name('category.show');
+Route::get('/category/{id}/delete','PackageCategoryController@destroy')->name('category.destroy');
+
+Route::get('/create','PackageCategoryController@create')->name('category.create');
+Route::post('/create','PackageCategoryController@store')->name('category.store');
+
+Route::post('/category/update/{id}','PackageCategoryController@update')->name('category.update');
+
 // subcategory routes
 Route::resource('subcategory', 'PackageSubcategoryController');
