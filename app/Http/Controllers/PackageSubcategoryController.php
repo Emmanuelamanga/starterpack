@@ -28,7 +28,6 @@ class PackageSubcategoryController extends Controller
     public function index()
     {
         $subcats = PackageSubcategory::all();
-        // dd($subcats);
          return view('packages.subcategories.index')
             ->with('subcats', $subcats);
 
@@ -83,7 +82,6 @@ class PackageSubcategoryController extends Controller
     public function show( $packageSubcategory)
     {
          $spc = PackageSubcategory::find($packageSubcategory);
-        // dd($pc);
          return view('packages.subcategories.show')->with('subcat', $spc);
     }
 
@@ -96,7 +94,6 @@ class PackageSubcategoryController extends Controller
     public function edit( $packageSubcategory)
     {
          $spc = PackageSubcategory::find($packageSubcategory);
-        // dd($pc);
          return view('packages.subcategories.edit')->with('subcategory', $spc);
     }
 
@@ -136,8 +133,6 @@ class PackageSubcategoryController extends Controller
     {
         
         PackageSubcategory::where('id', $packageSubcategory)->delete();
-        // dd($packageCategory);
-        // // $pc->id->delete();
         return redirect()->route('subcategory.index')->with('success', 'Sub Category Deleted');
     }
 }

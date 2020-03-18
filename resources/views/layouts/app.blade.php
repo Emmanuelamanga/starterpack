@@ -61,7 +61,9 @@
                                      <!-- admin links -->
                                      <a class="nav-link" href="{{route('category.index')}}">{{ __('Category') }}</a>
                                       <a class="nav-link" href="{{route('subcategory.index')}}">{{ __('Sub-Category') }}</a>
-                                     @else
+                                      <a class="nav-link" href="">{{ __('Material') }}</a>
+                                    
+                                      @else
                                     <!-- user links -->
                                     
                                      @endif

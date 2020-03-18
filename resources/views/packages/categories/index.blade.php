@@ -12,7 +12,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8"> -->
 <div class="card">
-    <div class="card-header">Dashboard <a href="{{route('category.create')}}" class="btn btn-sm btn-primary pull-right"><i class="fa fa-plus"> </i> Create Category</a></div>
+    <div class="card-header">AVAILABLE CATEGORIES <a href="{{route('category.create')}}" class="btn btn-sm btn-primary pull-right"><i class="fa fa-plus"> </i> Create Category</a></div>
         <div class="card-body">
             <table id="example"class="table table-bordered table-condensed table-striped">
                     <thead>
