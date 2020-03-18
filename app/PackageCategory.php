@@ -14,7 +14,8 @@ class PackageCategory extends Model
     protected $fillable = 
     [
     	'title',
-		'discription'
+		'discription',
+        'creatorid',
     ];
 
 

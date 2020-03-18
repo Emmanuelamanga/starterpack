@@ -47,4 +47,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 // categories routes
 Route::resource('category', 'PackageCategoryController');
 // subcategory routes
-Route::resource('subcategory', 'PackageSubcategory');
+Route::resource('subcategory', 'PackageSubcategoryController');
