@@ -15,9 +15,11 @@ class CreatePackageSubcategoriesTable extends Migration
     {
         Schema::create('package_subcategories', function (Blueprint $table) {
             $table->id();
-            $table->string('sub_id');
+            $table->string('catid');
+            $table->string('classid');
             $table->string('sub_title');
-            $table->string('sub_link');
+            $table->string('sub_desc');
+            $table->string('sub_authorid');
             $table->timestamps();
         });
     }

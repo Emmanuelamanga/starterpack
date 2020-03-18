@@ -14,7 +14,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 // categories routes
-// Route::resource('category', 'PackageCategoryController');
+// Route::resource('subcategory', 'PackageCategoryController');
 
 Route::get('/category', 'PackageCategoryController@index')->name('category.index');
 Route::get('/category/{id}/edit','PackageCategoryController@edit')->name('category.edit');
@@ -26,3 +26,12 @@ Route::post('/category/update/{id}','PackageCategoryController@update')->name('c
 
 // subcategory routes
 Route::resource('subcategory', 'PackageSubcategoryController');
+
+
+Route::get('/subcategory', 'PackageSubcategoryController@index')->name('subcategory.index');
+Route::get('/subcategory/{id}/edit','PackageSubcategoryController@edit')->name('subcategory.edit');
+Route::get('/subcategory/{id}','PackageSubcategoryController@show')->name('subcategory.show');
+Route::get('/subcategory/{id}/delete','PackageSubcategoryController@destroy')->name('subcategory.destroy');
+Route::get('/create','PackageSubcategoryController@create')->name('subcategory.create');
+Route::post('/create','PackageSubcategoryController@store')->name('subcategory.store');
+Route::post('/subcategory/update/{id}','PackageSubcategoryController@update')->name('subcategory.update');

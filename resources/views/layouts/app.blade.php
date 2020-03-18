@@ -60,6 +60,7 @@
                                      @if (Auth::user()->id == 1) 
                                      <!-- admin links -->
                                      <a class="nav-link" href="{{route('category.index')}}">{{ __('Category') }}</a>
+                                      <a class="nav-link" href="{{route('subcategory.index')}}">{{ __('Sub-Category') }}</a>
                                      @else
                                     <!-- user links -->
                                     

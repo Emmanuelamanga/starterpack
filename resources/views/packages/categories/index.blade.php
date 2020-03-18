@@ -38,9 +38,9 @@
                                 <td>{{$category->creatorid}}</td>
                                 <td style="text-align:center">
     <!-- {{-- view single category --}} -->
-   <a href="{{route('category.show', ['id'=>$category->id])}}" class="view" data-toggle="tooltip" data-title="View category"><i class="fa fa-eye" style="font-size:15px;"></i></a>&nbsp;
+   <a href="{{route('category.show', ['id'=>$category->id])}}" class="view" data-toggle="tooltip" data-title="View category"><i class="fa fa-eye" style="font-size:15px;"></i></a>&nbsp;&nbsp;
       <!-- {{-- edit category section --}} -->
-    <a href="{{route('category.edit', ['id'=>$category->id])}}" class="view" data-title="Edit category" data-toggle="tooltip"><i class="far fa-edit" style="font-size:15px;"></i></a>&nbsp;
+    <a href="{{route('category.edit', ['id'=>$category->id])}}" class="view" data-title="Edit category" data-toggle="tooltip"><i class="fa fa-edit" style="font-size:15px;"></i></a>&nbsp;
     <!-- {{--delete btn--}} -->
     <a class="btn  btn-sm" onclick="return confirm('Are you sure?')" href="{{route('category.destroy', ['id'=>$category->id])}}"><i class="fa fa-trash" style="color:red"></i></a>
     
