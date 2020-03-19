@@ -1,11 +1,7 @@
 @extends('layouts.app')
 
 @section('scripts')
- <script>
-    $(document).ready(function() {
-            $('#example').DataTable();
-        } );
-    </script>
+ 
 @endsection
 @section('content')
 <!-- <div class="container">
@@ -14,7 +10,7 @@
 <div class="card">
     <div class="card-header">AVAILABLE CATEGORIES <a href="{{route('category.create')}}" class="btn btn-sm btn-primary pull-right"><i class="fa fa-plus"> </i> Create Category</a></div>
         <div class="card-body">
-            <table id="example"class="table table-bordered table-condensed table-striped">
+            <table id="example" class="display" style="width:100%">
                     <thead>
                         <tr>
                             <th>SN</th>

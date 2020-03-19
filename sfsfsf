@@ -1,0 +1,125 @@
+[33mcommit e379f7f9d0115b74da1c8046fe115aa642fa7822[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Emmanuelamanga <emmanuelamanga2013@gmail.com>
+Date:   Thu Mar 19 04:35:43 2020 +0300
+
+    Subcategory item create initiated
+
+[33mcommit 83cf8644a6935bbea4f9d903902c433f7530d1a1[m
+Author: Emmanuelamanga <emmanuelamanga2013@gmail.com>
+Date:   Thu Mar 19 03:49:56 2020 +0300
+
+    migrated subcatitems
+
+[33mcommit a6aeb059240e35c2fb5545c8d41b8545367dba5a[m
+Author: Emmanuelamanga <emmanuelamanga2013@gmail.com>
+Date:   Thu Mar 19 01:14:38 2020 +0300
+
+    sub category items initialized
+
+[33mcommit 862a15a808047d362dc5829dff9f922853d9db1c[m
+Author: Emmanuelamanga <emmanuelamanga2013@gmail.com>
+Date:   Thu Mar 19 00:28:40 2020 +0300
+
+    subcategories complete
+
+[33mcommit b4b8b26071d87c8d0b697e3fa6d2d8f8d0e1307a[m
+Author: Emmanuelamanga <emmanuelamanga2013@gmail.com>
+Date:   Wed Mar 18 10:35:23 2020 +0300
+
+    subcategories initialised view delete
+
+[33mcommit ea492910253adec42b9bad226ac0e5251192ad79[m
+Author: Emmanuelamanga <emmanuelamanga2013@gmail.com>
+Date:   Wed Mar 18 08:40:41 2020 +0300
+
+    polishing views
+
+[33mcommit c2b6e837c9981c46ca71fb082a93a90efad02a37[m[33m ([m[1;31mazure/master[m[33m)[m
+Author: Emmanuelamanga <emmanuelamanga2013@gmail.com>
+Date:   Wed Mar 18 05:23:25 2020 +0300
+
+    categories complete
+
+[33mcommit cb83bf58ff0a6ec0a588e3e971f9f4af438785e5[m
+Author: Emmanuelamanga <emmanuelamanga2013@gmail.com>
+Date:   Wed Mar 18 03:15:35 2020 +0300
+
+    categories update
+
+[33mcommit a8b5e8cb34731d61d8b985cef65ae58181e58dfe[m
+Author: Emmanuelamanga <emmanuelamanga2013@gmail.com>
+Date:   Tue Mar 17 23:09:58 2020 +0300
+
+    composer updates
+
+[33mcommit a40fca8ab521d627d32f273b4f9a2ebff4f77f35[m
+Author: Emmanuelamanga <emmanuelamanga2013@gmail.com>
+Date:   Tue Mar 17 22:59:52 2020 +0300
+
+    good to go
+
+[33mcommit 293085be4031f4c8bb2c3fcd97259076a5ab7bfb[m
+Author: Emmanuelamanga <emmanuelamanga2013@gmail.com>
+Date:   Tue Mar 17 22:02:13 2020 +0300
+
+    Procfile for Heroku
+
+[33mcommit 7d91bc0c1117baf4ffc2dbd5f7885fe4e2565b96[m
+Author: Emmanuelamanga <emmanuelamanga2013@gmail.com>
+Date:   Tue Mar 17 19:53:38 2020 +0300
+
+    category package initialised
+
+[33mcommit 5f9e24e2bc9d02c1848afff04fe9621e4d33b204[m
+Author: Emmanuelamanga <emmanuelamanga2013@gmail.com>
+Date:   Tue Mar 17 17:21:41 2020 +0300
+
+    categories, subcategories added
+
+[33mcommit 5b17e4da490b18c6f17206c84ee9f6f73766a31a[m
+Author: Emmanuelamanga <emmanuelamanga2013@gmail.com>
+Date:   Tue Mar 17 16:24:48 2020 +0300
+
+    Auth is set for users and admins
+
+[33mcommit 0ba954df8d9408df7c310c11b2c2e78cb1a6a062[m
+Author: Emmanuelamanga <emmanuelamanga2013@gmail.com>
+Date:   Tue Mar 17 15:41:31 2020 +0300
+
+    all set at the branch
+
+[33mcommit f13660cd2c7db47ed17da432c96968836e4cddca[m
+Author: Emmanuelamanga <emmanuelamanga2013@gmail.com>
+Date:   Tue Mar 17 15:39:10 2020 +0300
+
+    multi auth merge
+
+[33mcommit aed5cc099f94e71089cacca12f76ba134466142f[m
+Author: Emmanuelamanga <emmanuelamanga2013@gmail.com>
+Date:   Tue Mar 17 02:24:23 2020 +0300
+
+    npm installs
+
+[33mcommit 0bfaacb7de93f77f36a74a1a5d69ffc937c34bec[m
+Author: Emmanuelamanga <emmanuelamanga2013@gmail.com>
+Date:   Tue Mar 17 01:05:01 2020 +0300
+
+    Vue added
+
+[33mcommit e673868e7f6eebe5201f7444c14b661e2afc6f63[m
+Author: Emmanuelamanga <emmanuelamanga2013@gmail.com>
+Date:   Tue Mar 17 00:20:18 2020 +0300
+
+    LinksTableSeeder and DatabaseSeeder modified
+
+[33mcommit 98066748a5281fe5d56458e49f77cec2515b38b1[m
+Author: Emmanuelamanga <emmanuelamanga2013@gmail.com>
+Date:   Tue Mar 17 00:15:06 2020 +0300
+
+    Added link model factory and migration
+
+[33mcommit ed91d4afe942e8e3568fbea2fc4606044d3dbe50[m
+Author: Emmanuelamanga <emmanuelamanga2013@gmail.com>
+Date:   Tue Mar 17 00:05:06 2020 +0300
+
+    Initial Commit
