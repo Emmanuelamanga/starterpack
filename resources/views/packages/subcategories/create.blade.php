@@ -36,7 +36,13 @@
                 <div class="col-md-4">
                 <select id="grp" class="form-control @error('grp') is-invalid @enderror" name="grp" value="{{ old('grp') }}" required autocomplete="grp" autofocus>
                         <option value="" selected disabled>Select Class</option>
-                        <option value="1">Form 4</option>
+                        @if(count($classrooms) > 0)
+                            @foreach($classrooms as $classroom)
+                                <option value="{{$classroom->id}}">{{$classroom->room_name}}</option>
+                            @endforeach
+                        @else
+                        <div class="alert alert-info">No categories <a href="{{route('classroom.create')}}" class="btn btn-sm btn-primary pull-right"><i class="fa fa-plus"> </i> Add </div>
+                        @endif
                     </select>
                     @error('grp')
                         <span class="invalid-feedback" role="alert">

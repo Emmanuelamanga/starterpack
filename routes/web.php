@@ -46,3 +46,14 @@ Route::resource('subcatitem', 'SubCatItemController');
 
 // subcategoryitems routes
 Route::get('search', 'searchController@search')->name('search');
+
+// materialgroup(classrooms) routes
+// Route::resource('materialgroup', 'MaterialGroupController');
+
+Route::get('/materialgroup', 'MaterialGroupController@index')->name('materialgroup.index');
+Route::get('/materialgroup/{id}/edit','MaterialGroupController@edit')->name('materialgroup.edit');
+Route::get('/materialgroup/{id}','MaterialGroupController@show')->name('materialgroup.show');
+Route::get('/materialgroup/{id}/delete','MaterialGroupController@destroy')->name('materialgroup.destroy');
+Route::get('/creatematerialgroup','MaterialGroupController@create')->name('materialgroup.create');
+Route::post('/storematerialgroup','MaterialGroupController@store')->name('materialgroup.store');
+Route::post('/materialgroup/update/{id}','MaterialGroupController@update')->name('materialgroup.update');

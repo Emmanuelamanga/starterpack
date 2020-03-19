@@ -7,6 +7,7 @@ use App\PackageCategory;
 use Illuminate\Http\Request;
 use Auth;
 use DB;
+use App\MaterialGroup;
 
 class PackageSubcategoryController extends Controller
 {
@@ -41,7 +42,8 @@ class PackageSubcategoryController extends Controller
     public function create()
     {
          return view('packages.subcategories.create')
-            ->with('categories', PackageCategory::all());
+            ->with('categories', PackageCategory::all())
+                ->with('classrooms', MaterialGroup::all());
     }
 
     /**
