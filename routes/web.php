@@ -43,3 +43,6 @@ Route::post('/subcategory/update/{id}','PackageSubcategoryController@update')->n
 
 // subcategoryitems routes
 Route::resource('subcatitem', 'SubCatItemController');
+
+// subcategoryitems routes
+Route::get('search', 'searchController@search')->name('search');
