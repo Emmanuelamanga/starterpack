@@ -24,7 +24,7 @@
                                 <td><!-- {{-- view single category --}} -->
 <!--    <a href="{{route('category.show', [$category->id])}}" class="btn btn-primary" data-toggle="tooltip" data-title="View category"><i class="fa fa-eye" style="font-size:15px;"></i> View</a>&nbsp; -->
       <!-- {{-- edit category section --}} -->
-    <a href="{{route('category.edit', ['id'=>$category->id])}}" class="btn btn-sm btn-primary" data-title="Edit category" data-toggle="tooltip"><i class="far fa-edit" style="font-size:15px;"></i> Edit</a>&nbsp;
+    <a href="{{route('category.edit', ['id'=>$category->id])}}" class="btn btn-sm btn-primary" data-title="Edit category" data-toggle="tooltip"><i class="fa fa-edit" style="font-size:15px;"></i> Edit</a>&nbsp;
     <!-- {{--delete btn--}} -->
     <a class="btn  btn-sm btn-warning" onclick="return confirm('Are you sure?')" href="{{route('category.destroy', ['id'=>$category->id])}}"><i class="fa fa-trash" style="color:red"></i> Delete</a> </td>
                             </tr>

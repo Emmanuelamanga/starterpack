@@ -20,7 +20,7 @@
                             <tr> <th>Author</th><td>{{$subcat->sub_authorid}}</td></tr>
                             <tr><th>Operation</th>
                                 <td>
-    <a href="{{route('subcategory.edit', ['id'=>$subcat->id])}}" class="btn btn-sm btn-primary" data-title="Edit subcat" data-toggle="tooltip"><i class="far fa-edit" style="font-size:15px;"></i> Edit</a>&nbsp;
+    <a href="{{route('subcategory.edit', ['id'=>$subcat->id])}}" class="btn btn-sm btn-primary" data-title="Edit subcat" data-toggle="tooltip"><i class="fa fa-edit" style="font-size:15px;"></i> Edit</a>&nbsp;
 
     <a class="btn  btn-sm btn-warning" onclick="return confirm('Are you sure?')" href="{{route('subcategory.destroy', ['id'=>$subcat->id])}}"><i class="fa fa-trash" style="color:red"></i> Delete</a> </td>
                             </tr>
