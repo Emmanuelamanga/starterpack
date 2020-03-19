@@ -15,7 +15,11 @@ class CreateSubCatItemsTable extends Migration
     {
         Schema::create('sub_cat_items', function (Blueprint $table) {
             $table->id();
+            $table->string('subcatid');
+            $table->string('authorid');
+            $table->string('file_name');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

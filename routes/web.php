@@ -40,3 +40,6 @@ Route::get('/subcategory/{id}/delete','PackageSubcategoryController@destroy')->n
 Route::get('/createsubcategory','PackageSubcategoryController@create')->name('subcategory.create');
 Route::post('/storesubcategory','PackageSubcategoryController@store')->name('subcategory.store');
 Route::post('/subcategory/update/{id}','PackageSubcategoryController@update')->name('subcategory.update');
+
+// subcategoryitems routes
+Route::resource('subcatitems', 'SubCatItemController');

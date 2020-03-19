@@ -14,7 +14,8 @@ class SubCatItemController extends Controller
      */
     public function index()
     {
-        //
+        return view('packages.subcatitems.index')
+                ->with('subcatitems',SubCatItem::all());
     }
 
     /**
@@ -24,7 +25,8 @@ class SubCatItemController extends Controller
      */
     public function create()
     {
-        //
+        return view('packages.subcatitems.create')
+                ->with('subcatitems',SubCatItem::all());
     }
 
     /**
