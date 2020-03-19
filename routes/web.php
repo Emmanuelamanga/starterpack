@@ -42,4 +42,4 @@ Route::post('/storesubcategory','PackageSubcategoryController@store')->name('sub
 Route::post('/subcategory/update/{id}','PackageSubcategoryController@update')->name('subcategory.update');
 
 // subcategoryitems routes
-Route::resource('subcatitems', 'SubCatItemController');
+Route::resource('subcatitem', 'SubCatItemController');

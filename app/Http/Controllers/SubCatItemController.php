@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\SubCatItem;
 use Illuminate\Http\Request;
+use App\PackageCategory;
+use App\PackageSubcategory;
 
 class SubCatItemController extends Controller
 {
@@ -26,7 +28,8 @@ class SubCatItemController extends Controller
     public function create()
     {
         return view('packages.subcatitems.create')
-                ->with('subcatitems',SubCatItem::all());
+                ->with('categories',PackageCategory::all())
+                ->with('subcats', PackageSubcategory::all());
     }
 
     /**
