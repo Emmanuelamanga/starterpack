@@ -38,10 +38,9 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var array
      */
-        'email_verified_at' =>     protected $casts = [
-'datetime',
-
-    ];
+     protected $casts = [
+            'email_verified_at' => 'datetime',
+        ];
     use SoftDeletes;
 
     /**
