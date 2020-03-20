@@ -21,7 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 // categories routes
 // Route::resource('subcategory', 'PackageCategoryController');
 
-Route::middleware(['is_admin'])->group(function () {
+Route::middleware(['is_admin','verified'])->group(function () {
 	Route::get('/category', 'PackageCategoryController@index')->name('category.index');
 	Route::get('/category/{id}/edit','PackageCategoryController@edit')->name('category.edit');
 	Route::get('/category/{id}','PackageCategoryController@show')->name('category.show');
