@@ -46,11 +46,11 @@ return [
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', 'db4free.net'),
+            'host' => env('DB_HOST', 'mydbserve1.mysql.database.azure.com'),
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'starterpack'),
-            'username' => env('DB_USERNAME', 'starterpack'),
-            'password' => env('DB_PASSWORD', 'starterpack2020'),
+            'username' => env('DB_USERNAME', 'Scripter@mydbserve1'),
+            'password' => env('DB_PASSWORD', 'Admin2020'),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
@@ -58,9 +58,9 @@ return [
             'prefix_indexes' => true,
             'strict' => true,
             'engine' => null,
-            'options' => extension_loaded('pdo_mysql') ? array_filter([
-                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-            ]) : [],
+             'options' => (env('MYSQL_SSL')) ? [
+                PDO::MYSQL_ATTR_SSL_KEY    => '/ssl/BaltimoreCyberTrustRoot.crt.pem', 
+            ] : [],
         ],
 
         'pgsql' => [
