@@ -57,7 +57,7 @@
                         @if (Route::has('login'))
                             @auth
                                 @if (Auth::check()) 
-                                     @if (Auth::user()->id == 1) 
+                                     @if (Auth::user()->is_admin == 1) 
                                      <!-- admin links -->
                                      <a class="nav-link" href="{{route('category.index')}}">{{ __('Category') }}</a>
                                       <a class="nav-link" href="{{route('subcategory.index')}}">{{ __('Sub-Category') }}</a>
