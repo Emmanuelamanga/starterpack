@@ -14,7 +14,7 @@ Route::get('/', function () {
 // admin users home page 
 Route::get('admin/home', 'HomeController@adminHome')->name('admin.home')->middleware('is_admin');
 
-Auth::routes();
+Auth::routes(['verify'=>true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
