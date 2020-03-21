@@ -14,13 +14,21 @@ class SearchController extends Controller
         
         if($request->ajax()) {
           
-            $data = PackageSubcategory::where('catid', 'LIKE', $request->cat.'%')
+            // $data = PackageSubcategory::where('catid', 'LIKE', $request->cat.'%')
             		// ->join('')
-                	->get();
+                	// ->get();
+             $data = PackageSubcategory::where('catid', 'LIKE', $request->cat.'%')
+                    ->leftJoin('material_groups', 'package_subcategories.classid', '=', 'material_groups.id')
+                    ->get();
+            // $data = DB::table('package_subcategories')
+            //         ->where('catid', 'LIKE', $request->cat.'%')
+            //         ->leftJoin('material_groups', 'package_subcategories.classid', '=', 'material_groups.id')
+            //         ->get();
+
            
           
            
-            if (count($data)>0) {
+            if ($count = count($data)>0) {
               
                 // $output = '<ul class="list-group" style="display: block; position: relative; z-index: 1">';
               
@@ -30,10 +38,17 @@ class SearchController extends Controller
                 // }
               
                 // $output .= '</ul>';
+
                 $output = $data;
                  json_encode($output);
-            }
-            else {
+
+                 // for ($i=0; $i < $count; $i++) { 
+                 //    if () {
+                        
+                 //    }
+                 // }
+
+            }else {
              
                 // $output .= '<li class="list-group-item">'.'No results'.'</li>';
                   $output = '';

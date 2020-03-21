@@ -6,6 +6,8 @@ use App\SubCatItem;
 use Illuminate\Http\Request;
 use App\PackageCategory;
 use App\PackageSubcategory;
+use Auth;
+use Storage;
 
 class SubCatItemController extends Controller
 {
@@ -41,8 +43,31 @@ class SubCatItemController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
+        $this->validate($request,
+            [
+                'cat'=>'required',
+                'grp'=>'required',
+                'subcat'=>'required',
+                // 'desc'=>'required',
+                'filename' =>'file | required'
 
-        dd($input);
+            ]);
+
+            $subcatrec = new SubCatItem;
+            $subcatrec->catid = $request->cat;
+            $subcatrec->grpid = $request->grp;
+            $subcatrec->subcatid = $request->subcat;
+            $subcatrec->file_name = $request->filename; 
+            $subcatrec->authorid = Auth::user()->id;
+            $subcatrec->save();
+
+            Storage::disk('local')->put(
+                'materials/'.$request->filename,$request->filename
+                // file_get_contents($request->file('filename')->getRealPath())
+            );
+
+
+            return redirect()->route('subcatitem.index')->with('success','Sub-Category Item Added');
     }
 
     /**
@@ -85,8 +110,9 @@ class SubCatItemController extends Controller
      * @param  \App\SubCatItem  $subCatItem
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SubCatItem $subCatItem)
+    public function destroy($subCatItem)
     {
-        //
+        SubCatItem::where('id', $subCatItem)->delete();
+        return redirect()->route('subcatitem.index')->with('success', 'Sub Category Item Deleted');
     }
 }

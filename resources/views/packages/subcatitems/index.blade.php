@@ -4,7 +4,7 @@
 <div class="card">
     <div class="card-header">AVAILABLE SUB-CATEGORY ITEMS <a href="{{route('subcatitem.create')}}" class="btn btn-sm btn-primary pull-right"><i class="fa fa-plus"> </i> Create Sub-Category Item</a></div>
         <div class="card-body">
-            <table id="example"class="table table-bordered table-condensed table-striped">
+            <table id="myTable" class="display table table-bordered table-condensed table-striped">
                     <thead>
                         <tr>
                             <th>SN</th>

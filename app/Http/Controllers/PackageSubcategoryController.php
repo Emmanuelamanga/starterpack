@@ -64,15 +64,15 @@ class PackageSubcategoryController extends Controller
 
             ]);
 
-        $subcatrec = new PackageSubcategory;
-        $subcatrec->catid = $request->cat;
-        $subcatrec->classid = $request->grp;
-        $subcatrec->sub_title = $request->subcat;
-        $subcatrec->sub_desc = $request->desc;        
-        $subcatrec->sub_authorid = Auth::user()->id;
-        $subcatrec->save();
+            $subcatrec = new PackageSubcategory;
+            $subcatrec->catid = $request->cat;
+            $subcatrec->classid = $request->grp;
+            $subcatrec->sub_title = $request->subcat;
+            $subcatrec->sub_desc = $request->desc;        
+            $subcatrec->sub_authorid = Auth::user()->id;
+            $subcatrec->save();
 
-        return redirect()->route('subcategory.index',['success'=>'Sub-Category Added']);
+        return redirect()->route('subcategory.index')->with('success','Sub-Category Added');
     }
 
     /**

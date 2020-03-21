@@ -18,7 +18,7 @@
                        
                         success:function(data) {
                           
-                            // $('#country_list').html(data);
+                            $('#country_list').html(data);
                               var len = 0;
                                  if(data!= null){
                                    len = data.length;
@@ -31,9 +31,9 @@
                                      var subid = data[i].id;
                                      var subtitle = data[i].sub_title;
                                      var classid = data[i].classid;
-
+                                     var classname = data[i].room_name;
                                      var option1 = "<option value='"+subid+"'>"+subtitle+"</option>";
-                                     var option2 = "<option value='"+classid+"'>"+classid+"</option>"; 
+                                     var option2 = "<option value='"+classid+"'>"+classname+"</option>"; 
                                         $("#grp").append(option2);                                      
                                         $("#subcat").append(option1); 
                                     }
@@ -59,7 +59,7 @@
         CREATE SUB-CATEGORY ITEM
     </div>
     <div class="card-body">
-        <form method="POST" action="{{ route('subcatitem.store') }}">
+        <form method="POST" action="{{ route('subcatitem.store') }}" enctype="multipart/form-data">
             @csrf
             <!-- category -->
             <div class="form-group row">
@@ -76,7 +76,7 @@
                         @endif
                     </select>
 
-                     <div id="country_list"></div>
+                     <!-- <div id="country_list"></div> -->
 
                     @error('cat')
                         <span class="invalid-feedback" role="alert">
@@ -125,10 +125,10 @@
             </div>
             <!-- description -->
             <div class="form-group row">
-                <label for="desc" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
+                <label for="filename" class="col-md-4 col-form-label text-md-right">{{ __('filenameription') }}</label>
                 <div class="col-md-4">
-                    <input cols="5" id="desc" type="file" class="form-control @error('desc') is-invalid @enderror" name="desc" required >
-                    @error('desc')
+                    <input id="filename" type="file" class="form-control @error('filename') is-invalid @enderror" name="filename" required >
+                    @error('filename')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>

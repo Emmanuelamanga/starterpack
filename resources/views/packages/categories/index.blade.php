@@ -1,19 +1,7 @@
 @extends('layouts.app')
 
 @section('scripts')
-  <!-- data tables -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css"/>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.js"></script>
- <script type="text/javascript">
-        $(document).ready(function() {
-        var table = $('#myTable').DataTable();
-         
-        $('#myTable tbody').on('click', 'tr', function () {
-            var data = table.row( this ).data();
-            alert( 'You clicked on '+data[0]+'\'s row' );
-        } );
-    } );
-    </script>
+
 @endsection
 @section('content')
 <!-- <div class="container">
@@ -22,7 +10,7 @@
 <div class="card">
     <div class="card-header">AVAILABLE SUBJECT CATEGORIES <a href="{{route('category.create')}}" class="btn btn-sm btn-primary pull-right"><i class="fa fa-plus"> </i> Create Category</a></div>
         <div class="card-body">
-            <table id="myTable" class="table table-bordered table-condensed table-striped"  style="width:100%">
+            <table id="myTable" class="display table table-bordered table-condensed table-striped"  style="width:100%">
                     <thead>
                         <tr>
                             <th>SN</th>

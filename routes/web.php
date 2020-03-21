@@ -43,8 +43,16 @@ Route::middleware(['is_admin','verified'])->group(function () {
 	Route::post('/subcategory/update/{id}','PackageSubcategoryController@update')->name('subcategory.update');
 
 	// subcategoryitems routes
-	Route::resource('subcatitem', 'SubCatItemController');
+	// Route::resource('subcatitem', 'SubCatItemController');
 
+	Route::get('/subcatitem', 'SubCatItemController@index')->name('subcatitem.index');
+	Route::get('/subcatitem/{id}/edit','SubCatItemController@edit')->name('subcatitem.edit');
+	Route::get('/subcatitem/{id}','SubCatItemController@show')->name('subcatitem.show');
+	Route::get('/subcatitem/{id}/delete','SubCatItemController@destroy')->name('subcatitem.destroy');
+	Route::get('/createsubcatitem','SubCatItemController@create')->name('subcatitem.create');
+	Route::post('/storesubcatitem','SubCatItemController@store')->name('subcatitem.store');
+	Route::post('/subcatitem/update/{id}','SubCatItemController@update')->name('materialgroup.update');
+	
 	// subcategoryitems routes
 	Route::get('search', 'searchController@search')->name('search');
 

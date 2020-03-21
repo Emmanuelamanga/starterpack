@@ -4,7 +4,7 @@
 <div class="card">
     <div class="card-header">AVAILABLE SUB-CATEGORIES <a href="{{route('subcategory.create')}}" class="btn btn-sm btn-primary pull-right"><i class="fa fa-plus"> </i> Create Sub-Category</a></div>
         <div class="card-body">
-            <table id="example"class="table table-bordered table-condensed table-striped">
+            <table id="myTable"class="display table table-bordered table-condensed table-striped">
                     <thead>
                         <tr>
                             <th>SN</th>

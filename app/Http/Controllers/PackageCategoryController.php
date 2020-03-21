@@ -56,7 +56,7 @@ class PackageCategoryController extends Controller
         $record = new PackageCategory;
         $record->title = $request->cat;
         $record->discription = $request->desc;
-        $record->author = Auth::user()->id;
+        $record->creatorid = Auth::user()->id;
         $record->save();
 
         return redirect()->route('category.index',['success'=>'Category Added']);
