@@ -41,7 +41,7 @@
                                 <option value="{{$classroom->id}}">{{$classroom->room_name}}</option>
                             @endforeach
                         @else
-                        <div class="alert alert-info">No categories <a href="{{route('classroom.create')}}" class="btn btn-sm btn-primary pull-right"><i class="fa fa-plus"> </i> Add </div>
+                        <div class="alert alert-info">No categories <a href="{{route('materialgroup.create')}}" class="btn btn-sm btn-primary pull-right"><i class="fa fa-plus"> </i> Add </div>
                         @endif
                     </select>
                     @error('grp')
