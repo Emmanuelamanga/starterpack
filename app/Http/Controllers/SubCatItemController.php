@@ -42,6 +42,9 @@ class SubCatItemController extends Controller
      */
     public function store(Request $request)
     {
+        
+    
+
         $input = $request->all();
         $this->validate($request,
             [
@@ -49,22 +52,32 @@ class SubCatItemController extends Controller
                 'grp'=>'required',
                 'subcat'=>'required',
                 // 'desc'=>'required',
-                'filename' =>'file | required'
+                'filename' =>'required|file|mimes:pdf,doc,docx,xls,mp3,mp4,pub|max:2048'
 
             ]);
+             // $path = $request->file('filename')->store('materials');
+
+         // cache the file
+        $file = $request->file('filename');
+
+        // generate a new filename. getClientOriginalExtension() for the file extension
+        $filename = 'Item-' . time() . '.' . $file->getClientOriginalExtension();
 
             $subcatrec = new SubCatItem;
             $subcatrec->catid = $request->cat;
             $subcatrec->grpid = $request->grp;
             $subcatrec->subcatid = $request->subcat;
-            $subcatrec->file_name = $request->filename; 
+            $subcatrec->file_name =  $filename; 
             $subcatrec->authorid = Auth::user()->id;
             $subcatrec->save();
 
-            Storage::disk('local')->put(
-                'materials/'.$request->filename,'contents'
-                // file_get_contents($request->file('filename')->getRealPath())
-            );
+
+
+        // save to storage/app/materials as the new $filename
+        $path = $file->storeAs('materials', $filename);
+
+
+            
 
 
             return redirect()->route('subcatitem.index')->with('success','Sub-Category Item Added');
