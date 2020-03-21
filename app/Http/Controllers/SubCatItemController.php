@@ -62,7 +62,7 @@ class SubCatItemController extends Controller
             $subcatrec->save();
 
             Storage::disk('local')->put(
-                'materials/'.$request->filename,$request->filename
+                'materials/'.$request->filename,'contents'
                 // file_get_contents($request->file('filename')->getRealPath())
             );
 
