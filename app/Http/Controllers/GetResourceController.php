@@ -11,6 +11,7 @@ use App\MaterialGroup;
 use Auth;
 use App\SubCatItem;
 use Storage;
+use Symfony\Component\HttpFoundation\Response;
 
 class GetResourceController extends Controller
 {
@@ -107,6 +108,14 @@ class GetResourceController extends Controller
         // $path = base_path() . '/public/materials/'.$item->file_name;
         // $path = storage_path('app\public\materials\\').$item->file_name;
         // dd($item->file_name);
+
+        // return Response::make(base64_decode(), 200, [
+        //     'Content-Type' => 'application/pdf',
+        //     'Content-Disposition' => 'inline; filename="'.$item->file_name.'"',
+        // ]);
+
+        // return response()->file('materials/'.$item->file_name);
+        
         return view('packages.getresources.show')
                 ->with('item',$item);
                 // ->with('path',$path)

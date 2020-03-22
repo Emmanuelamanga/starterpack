@@ -39,15 +39,16 @@
             </tbody>
         </table> --> 
 
-        <!-- <object data="{{asset('storage/materials/".$item->file_name."')}}" type="application/pdf">-->
-            <!-- <iframe id="" style="border:1px solid #666CCC" title="PDF in an i-Frame" src="{{asset('storage/materials/Item-1584867501.pdf')}}" frameborder="1" scrolling="auto" height="" width="100%"></iframe> -->
-            <object data="{{asset('storage/materials/Item-1584872190.pdf')}}" type="application/pdf">
-                <embed src="{{asset('storage/materials/Item-1584872190.pdf')}}" type="application/pdf" />
-            </object>
+        <!-- <object data="{{asset('storage/materials/".$item->file_name."')}}" type="application/pdf"> -->
+            <embed src="{{asset('storage/materials/Item-1584872190.pdf')}}" width="100%" height="1100"> </embed>
+            <!-- </object> -->
+            <!-- <iframe src="http://docs.google.com/gview?url={{asset('storage/app/public/materials/Item-1584872190.pdf')}}&embedded=true" style="width:600px; height:500px;" frameborder="1"> -->
+</iframe>
+            <!-- <iframe src ="{{ asset('storage/materials/Item-1584872190.pdf') }}" width="1000px" height="600px"></iframe> -->
             <!-- </object>  -->
         <!-- <iframe src="{{asset('storage/materials/$item->file_name')}}"></iframe> -->
         <!-- <iframe id="" style="border:1px solid #666CCC" title="PDF in an i-Frame" src="{{asset('storage/Item-1584867501.pdf')}}" frameborder="1" scrolling="auto" height="1100" width="100%"></iframe> -->
-    <img src="" alt="">
+    <!-- <img src="" alt=""> -->
     </div>
 </div>
 @endsection

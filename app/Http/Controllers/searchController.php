@@ -1,8 +1,7 @@
 <?php
-
-
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\PackageSubcategory;
 use http\Env\Response;
 use Illuminate\Http\Request;
