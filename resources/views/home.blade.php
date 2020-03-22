@@ -13,7 +13,7 @@
             <div class="card">
                 <div class="card-header">My Packages <a href="#" class="btn btn-sm btn-primary">Request New Package</a> &nbsp; <a href="#">Select existing Package</a></div>
                 <div class="card-body">
-                    No Packages yet 
+                    
                 </div>
             </div>
         </div>

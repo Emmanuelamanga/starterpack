@@ -40,7 +40,7 @@
                             </tr>
                             @endforeach
                         @else
-                            <tr><td colspan="7" class="alert alert-info"> <strong>No subcategory Records</strong>  <a href="{{route('subcategory.create')}}" class="btn btn-primary pull-right"><i class="fa fa-plus"> </i> Create subcategory</a></td></tr>
+                            <tr><td colspan="8" class="alert alert-info"> <strong>No subcategory Records</strong>  <a href="{{route('subcategory.create')}}" class="btn btn-primary pull-right"><i class="fa fa-plus"> </i> Create subcategory</a></td></tr>
                         @endif
                     </tbody>
                     <tfoot>

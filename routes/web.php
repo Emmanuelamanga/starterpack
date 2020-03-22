@@ -11,8 +11,6 @@ Route::get('/', function () {
 });
 
 
-// admin users home page 
-Route::get('admin/home', 'HomeController@adminHome')->name('admin.home')->middleware('is_admin');
 
 Auth::routes(['verify'=>true]);
 
@@ -22,6 +20,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Route::resource('subcategory', 'PackageCategoryController');
 
 Route::middleware(['is_admin','verified'])->group(function () {
+
+	// admin home page 
+	Route::get('admin/home', 'AdminController@adminHome')->name('admin.home');
+
 	Route::get('/category', 'PackageCategoryController@index')->name('category.index');
 	Route::get('/category/{id}/edit','PackageCategoryController@edit')->name('category.edit');
 	Route::get('/category/{id}','PackageCategoryController@show')->name('category.show');
