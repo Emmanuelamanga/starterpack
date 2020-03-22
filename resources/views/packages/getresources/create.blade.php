@@ -10,7 +10,7 @@
                     var query = $(this).val(); 
                     $.ajax({
                        
-                        url:"{{ route('search') }}",
+                        url:"{{ route('searchresource') }}",
                   
                         type:"GET",
                        
@@ -30,16 +30,22 @@
 
                                      var subid = data[i].id;
                                      var subtitle = data[i].sub_title;
+
                                      var classid = data[i].classid;
                                      var classname = data[i].room_name;
+
                                      var option1 = "<option value='"+subid+"'>"+subtitle+"</option>";
+                                     $("#subcat").append(option1); 
+
                                      var option2 = "<option value='"+classid+"'>"+classname+"</option>"; 
-                                        $("#grp").append(option2);                                      
-                                        $("#subcat").append(option1); 
+                                     $("#grp").append(option2);
+                                        
                                     }
+                                    $('#checkdata').html("<div class='alert alert-success'>Confirmed: Category Resouced</div>");
                                  }else{
                                     $("#grp").append("<option  disabled>No class For Category</option>");                                      
-                                        $("#subcat").append("<option disabled><i class='alert alert-warning'>No subcategories Found</i></option>"); 
+                                        $("#subcat").append("<option disabled><i class='alert alert-warning'>No subcategories Found</i></option>");  
+                                        $('#checkdata').html("<div class='alert alert-warning'>Not Resouced .. !!</div>");
                                  }
                         }
                     })
@@ -47,22 +53,22 @@
                 });
 
                 
-                // $(document).on('click', 'li', function(){
-                  
+                // $(document).on('change',function(){
+                    
                 //     var value = $(this).text();
-                //     $('#cat').val(value);
-                //     $('#country_list').html("");
+                //     $('#subcat').val('');
+                //     $('#grp').val('');
                 // });
             });
         </script>
 @endsection
 @section('content')
 <div class="card">
-    <div class="card-header">
-        CREATE SUB-CATEGORY ITEM
+    <div class="card-header text-md-center">
+        SELECT AN EXISTING RESOURCE
     </div>
     <div class="card-body">
-        <form method="POST" action="{{ route('subcatitem.store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('getresource.store') }}" enctype="multipart/form-data">
             @csrf
             <!-- category -->
             <div class="form-group row">
@@ -111,8 +117,8 @@
                    <!--  <input id="subcat" type="subcat" class="form-control @error('subcat') is-invalid @enderror" name="subcat" value="{{ old('subcat') }}" required autocomplete="subcat" autofocus> -->
                     <select id="subcat" class="form-control @error('subcat') is-invalid @enderror" name="subcat" value="{{ old('subcat') }}" required autocomplete="subcat" autofocus>
                         <option value="" selected disabled>Select Sub-Category</option>
-                         <!-- @if(count($subcats) > 0)
-                            @foreach($subcats as $subcat)
+                         <!-- @if(count($categories) > 0)
+                            @foreach($categories as $subcat)
                                 <option value="{{$subcat->id}}">{{$subcat->sub_title}}</option>
                             @endforeach
                         @else
@@ -128,21 +134,22 @@
             </div>
             <!-- description -->
             <div class="form-group row">
-                <label for="filename" class="col-md-4 col-form-label text-md-right">{{ __('filenameription') }}</label>
+                <label for="filename" class="col-md-4 col-form-label text-md-right">{{ __('Resourced') }}</label>
                 <div class="col-md-4">
-                    <input id="filename" type="file" class="form-control @error('filename') is-invalid @enderror" name="filename" required >
-                    @error('filename')
+                   <!--  <input id="filename" type="file" class="form-control @error('filename') is-invalid @enderror" name="filename" required > -->
+                   <div id="checkdata"></div>
+                   <!--  @error('filename')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
-                    @enderror
+                    @enderror -->
                 </div>
             </div>
 
             <div class="form-group row mb-0">
                 <div class="col-md-8 offset-md-4">
                     <button type="submit" class="btn btn-success">
-                     <i class="fa fa-check"></i>  {{ __('Create Sub-Category Item') }}
+                     <i class="fa fa-check"></i>  {{ __('Select Resource') }}
                     </button>
 
                 </div>

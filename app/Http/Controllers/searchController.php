@@ -7,6 +7,7 @@ use App\PackageSubcategory;
 use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\GetResource;
 
 class SearchController extends Controller
 {
@@ -57,4 +58,32 @@ class SearchController extends Controller
             return $output;
         }
     }
-}
+ public function searchresource(Request $request){
+        
+        if($request->ajax()) {
+          
+    // $data = PackageSubcategory::where('catid', 'LIKE', $request->cat.'%')
+    //                 ->leftJoin('material_groups', 'package_subcategories.classid', '=', 'material_groups.id')
+    //                 ->get();
+           
+      $data = DB::table('package_subcategories')
+              ->where('package_subcategories.catid', 'LIKE', $request->cat.'%')
+              ->join('sub_cat_items', 'package_subcategories.id', '=', 'sub_cat_items.subcatid')
+              ->join('material_groups', 'package_subcategories.catid', '=', 'material_groups.id')
+              ->whereNull('sub_cat_items.deleted_at')
+              ->get();
+
+            if ($count = count($data)>0) {
+
+                $output = $data;
+                 json_encode($output);
+
+            }else {
+
+                  $output = '';
+            }
+           
+            return $output;
+        }
+    }
+  }

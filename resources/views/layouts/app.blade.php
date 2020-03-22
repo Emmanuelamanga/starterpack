@@ -36,7 +36,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
     <!-- Styles Scripts default-->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-       <!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
+       <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- data tables -->
     <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css"/>
@@ -76,17 +76,22 @@
                                      <a class="nav-link" href="{{route('category.index')}}">{{ __('Category') }}</a>
                                       <a class="nav-link" href="{{route('subcategory.index')}}">{{ __('Sub-Category') }}</a>
                                       <a class="nav-link" href="{{route('subcatitem.index')}}">{{ __('Material') }}</a>
-                                    <a class="nav-link" href="{{route('materialgroup.index')}}">{{ __('Classroom') }}</a>
-                                      @else
+                                     <a class="nav-link" href="{{route('materialgroup.index')}}">{{ __('Classroom') }}</a>
+                                      @elseif(Auth::user()->is_admin == 0)
                                     <!-- user links -->
-                                        
+                                       <a class="nav-link" href="{{route('home')}}">{{ __('Home') }}</a> 
+                                     @else
+                                     
                                      @endif
                                 @endif
                             @endauth
                         @else
 
                         @endif
-                        
+                        @auth
+                        <!-- guest links -->
+                         <a class="nav-link" href="#">{{ __('Blog') }}</a>
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
