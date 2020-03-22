@@ -17,12 +17,12 @@
                     <thead>
                         <tr>
                             <th>SN</th>
-                            <th>Category</th>
-                            <th>Sub-Category</th>
-                            <th>Description</th>
+                            <th>package name</th>
+                            <!-- <th>Sub-Category</th> -->
+                            <!-- <th>Description</th> -->
                             <th>Created</th>
                             <th>Updated</th>
-                            <th>Author</th>
+                            <!-- <th>Author</th> -->
                             <th>Operation</th>
                         </tr>
                     </thead>
@@ -31,17 +31,17 @@
                         @foreach($resources as $item)
                             <tr>
                                 <td>{{$item->id}}</td>
-                                <td>{{$item->catid}}</td>
-                                <td>{{$item->sub_title}}</td>
-                                <td>{{$item->sub_desc}}</td>
+                                <td>{{$item->subcatitemid}}</td>
+                                <!-- <td>{{$item->sub_title}}</td> -->
+                                <!-- <td>{{$item->sub_desc}}</td> -->
                                 <td>{{$item->created_at}}</td>
                                 <td>{{$item->updated_at}}</td>
-                                <td>{{$item->sub_authorid}}</td>
+                                <!-- <td>{{$item->sub_authorid}}</td> -->
                                 <td style="text-align:center">
     <!-- {{-- view single item --}} -->
    <a href="{{route('getresource.show', ['id'=> $item->id])}}" class="view" data-toggle="tooltip" data-title="View getresource"><i class="fa fa-eye" style="font-size:15px;"></i></a>&nbsp;&nbsp;
       <!-- {{-- edit getresource section --}} -->
-    <a href="{{route('getresource.edit', ['id'=>$item->id])}}" class="view" data-title="Edit Resource" data-toggle="tooltip"><i class="fa fa-edit" style="font-size:15px;"></i></a>&nbsp;
+    <!-- <a href="{{route('getresource.edit', ['id'=>$item->id])}}" class="view" data-title="Edit Resource" data-toggle="tooltip"><i class="fa fa-edit" style="font-size:15px;"></i></a>&nbsp; -->
     <!-- {{--delete btn--}} -->
     <a class="btn  btn-sm" onclick="return confirm('Are you sure?')" href="{{route('getresource.destroy', ['id'=>$item->id])}}"><i class="fa fa-trash" style="color:red"></i></a>
     
@@ -54,13 +54,13 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th>SN</th>
-                            <th>Category</th>
-                            <th>Sub-Category</th>
-                            <th>Description</th>
+                        <th>SN</th>
+                            <th>pacage name</th>
+                            <!-- <th>Sub-Category</th> -->
+                            <!-- <th>Description</th> -->
                             <th>Created</th>
                             <th>Updated</th>
-                            <th>Author</th>
+                            <!-- <th>Author</th> -->
                             <th>Operation</th>
                         </tr>
                     </tfoot>

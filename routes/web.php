@@ -68,16 +68,15 @@ Route::middleware(['is_admin','verified'])->group(function () {
 	Route::post('/storematerialgroup','MaterialGroupController@store')->name('materialgroup.store');
 	Route::post('/materialgroup/update/{id}','MaterialGroupController@update')->name('materialgroup.update');
 });
-	// getresource routes
-	Route::resource('getresource', 'GetResourceController');
-
 	// subcategoryitems routes
 	Route::get('searchresource', 'searchController@searchresource')->name('searchresource');
-	
-	// Route::get('/getresource', 'GetResourceController@index')->name('getresource.index');
-	// Route::get('/getresource/{id}/edit','GetResourceController@edit')->name('getresource.edit');
-	// Route::get('/getresource/{id}','GetResourceController@show')->name('getresource.show');
-	// Route::get('/getresource/{id}/delete','GetResourceController@destroy')->name('getresource.destroy');
-	// Route::get('/creategetresource','GetResourceController@create')->name('getresource.create');
-	// Route::post('/storegetresource','GetResourceController@store')->name('getresource.store');
-	// Route::post('/getresource/update/{id}','GetResourceController@update')->name('getresource.update');
+
+	// getresource routes
+	// Route::resource('getresource', 'GetResourceController');
+	Route::get('/getresource', 'GetResourceController@index')->name('getresource.index');
+	Route::get('/getresource/{id}/edit','GetResourceController@edit')->name('getresource.edit');
+	Route::get('/getresource/{id}','GetResourceController@show')->name('getresource.show');
+	Route::get('/getresource/{id}/delete','GetResourceController@destroy')->name('getresource.destroy');
+	Route::get('/creategetresource','GetResourceController@create')->name('getresource.create');
+	Route::post('/storegetresource','GetResourceController@store')->name('getresource.store');
+	Route::post('/getresource/update/{id}','GetResourceController@update')->name('getresource.update');

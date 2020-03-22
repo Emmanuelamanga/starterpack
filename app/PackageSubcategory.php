@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\PackageSubcategory;
 
 class PackageSubcategory extends Model
 {
@@ -15,4 +16,9 @@ class PackageSubcategory extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    public function getSubcategory($id)
+    {
+        return PackageSubcategory::where('id', $id)->first();
+    }
 }
