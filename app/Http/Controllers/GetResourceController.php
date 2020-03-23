@@ -15,15 +15,15 @@ use Symfony\Component\HttpFoundation\Response;
 
 class GetResourceController extends Controller
 {
-     /**
+    /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(){
+    public function __construct()
+    {
 
         $this->middleware('auth');
-    
     }
     /**
      * Display a listing of the resource.
@@ -48,10 +48,11 @@ class GetResourceController extends Controller
         //     dd($data);
 
         $resource = GetResource::where('userid', Auth::user()->id)->get();
+        $pack = new  PackageSubcategory;
 
         return view('packages.getresources.index')
-                ->with('resources', $resource)
-                ->with('subcat', new PackageSubcategory);
+            ->with('resources', $resource)
+            ->with('subcat', $pack);
     }
 
     /**
@@ -61,9 +62,10 @@ class GetResourceController extends Controller
      */
     public function create()
     {
-       return view('packages.getresources.create')
-       ->with('categories', PackageCategory::all())
-        // ->with('groups', MaterialGroup::all())
+
+        return view('packages.getresources.create')
+            ->with('categories', PackageCategory::all())
+            // ->with('groups', MaterialGroup::all())
         ;
     }
 
@@ -77,21 +79,28 @@ class GetResourceController extends Controller
     {
         $data = $request->all();
         // dd($data );
-        $this->validate($request, 
-        [
-            'cat' => 'required',
-            'grp'=>'required',
-            'subcat'=> 'required',
-        ]);
-
+        $this->validate(
+            $request,
+            [
+                'cat' => 'required',
+                'grp' => 'required',
+                'subcat' => 'required',
+            ]
+        );
+        // confirm if user already has resource
+        $check = SubCatItem::where('subcatid', $data['subcat'])
+                    ->where('authorid',Auth::user()->id)
+                    ->where('grpid', $data['grp'])->exists();
+        if ($check) {
+            return redirect()->back()->with('info', 'Resource Already availed'); 
+        }
         // GetResource::create($data);
         $newdata = new GetResource;
         $newdata->subcatitemid = $request->subcat;
         $newdata->userid =  Auth::user()->id;
         $newdata->save();
 
-        return redirect()->route('getresource.index')->with('success','Resource availed');
-
+        return redirect()->route('getresource.index')->with('success', 'Resource availed');
     }
 
     /**
@@ -101,24 +110,12 @@ class GetResourceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($getResource)
-    {   
-        // dd(SubCatItem::find($getResource));
+    {
         $item = SubCatItem::find($getResource);
-        //  $contents = Storage::disk('local')->url($item->file_name);
-        // $path = base_path() . '/public/materials/'.$item->file_name;
-        // $path = storage_path('app\public\materials\\').$item->file_name;
-        // dd($item->file_name);
 
-        // return Response::make(base64_decode(), 200, [
-        //     'Content-Type' => 'application/pdf',
-        //     'Content-Disposition' => 'inline; filename="'.$item->file_name.'"',
-        // ]);
-
-        // return response()->file('materials/'.$item->file_name);
-        
         return view('packages.getresources.show')
-                ->with('item',$item);
-                // ->with('path',$path)
+            ->with('item', $item)
+            ->with('subcat', new PackageSubcategory);
     }
 
     /**
@@ -153,6 +150,6 @@ class GetResourceController extends Controller
     public function destroy($getResource)
     {
         GetResource::where('id', $getResource)->delete();
-        return redirect()->route('getresource.index')->with('success', 'Category Item Deleted');
+        return redirect()->route('getresource.index')->with('success', 'Resource Removed ');
     }
 }

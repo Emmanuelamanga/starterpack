@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="card">
-    <div class="card-header ">VIEW ITEM</div>
+    <div class="card-header text-center"><strong class="">Title :</strong>  {{$subcat->getSubcategory($item->id)->sub_title ?? 'No Title'}} <strong>&nbsp;&nbsp; Description : </strong>{{$subcat->getSubcategory($item->id)->sub_desc ?? 'No Description'}}</div>
     <div class="card-body">
         <!-- <table id="example" class="table table-bordered table-condensed table-striped">
             <thead>
@@ -39,11 +39,12 @@
             </tbody>
         </table> --> 
 
-        <!-- <object data="{{asset('storage/materials/".$item->file_name."')}}" type="application/pdf"> -->
-            <embed src="{{asset('storage/materials/Item-1584872190.pdf')}}" width="100%" height="1100"> </embed>
-            <!-- </object> -->
-            <!-- <iframe src="http://docs.google.com/gview?url={{asset('storage/app/public/materials/Item-1584872190.pdf')}}&embedded=true" style="width:600px; height:500px;" frameborder="1"> -->
-</iframe>
+        <object data="{{asset('storage/materials/'.$item->file_name)}}" style="border:1px solid #666CCC" margin="auto"; height="1100" width="100%" type="application/pdf">
+            <!-- <embed src="{{asset('storage/materials/'.$item->file_name)}}" margin="auto" width="100%" height="1100"> </embed> -->
+        <iframe id="" style="border:1px solid #666CCC" title="PDF in an i-Frame" src="{{asset('storage/materials/'.$item->file_name)}}" frameborder="2" scrolling="auto" height="1100" width="100%"></iframe>
+           
+        </object>
+            
             <!-- <iframe src ="{{ asset('storage/materials/Item-1584872190.pdf') }}" width="1000px" height="600px"></iframe> -->
             <!-- </object>  -->
         <!-- <iframe src="{{asset('storage/materials/$item->file_name')}}"></iframe> -->

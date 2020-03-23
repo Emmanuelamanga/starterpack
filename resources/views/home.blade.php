@@ -11,7 +11,7 @@
                 </div>
             @endif
             <div class="card">
-                <div class="card-header"> <span style="font-size: 23px;">MY PACKAGES</span>  <a href="{{route('getresource.create')}}" class="btn btn-sm btn-primary pull-right"> <i class="fa fa-plus"></i>  Request New Package</a> &nbsp;&nbsp; <a href="#" class="btn btn-sm btn-info"> <i class="fa fa-check"></i> Select existing Package</a></div>
+                <div class="card-header"> <span style="font-size: 23px;">MY RESOURCES</span>  <a href="#" onclick="alert('We are working on this')" class="btn btn-sm btn-primary pull-right"> <i class="fa fa-plus"></i>  Request New Package</a> &nbsp;&nbsp; <a href="{{route('getresource.create')}}" class="btn btn-sm btn-info"> <i class="fa fa-check"></i> Select existing Package</a></div>
                 <div class="card-body">
                             <table id="myTable"class="display table table-bordered table-condensed table-striped">
                     <thead>
@@ -49,7 +49,7 @@
                             </tr>
                             @endforeach
                         @else
-                            <tr><td colspan="8" class="alert alert-info"> <strong>No subcategory Records</strong>  <a href="{{route('getresource.create')}}" class="btn btn-primary pull-right"><i class="fa fa-plus"> </i> Request New Package</a></td></tr>
+                            <tr><td colspan="8" class="alert alert-info"> <strong>No Resources Found</strong>  <a href="{{route('getresource.create')}}" class="btn btn-primary pull-right"><i class="fa fa-plus"> </i> Request An Existing Resource</a></td></tr>
                         @endif
                     </tbody>
                     <tfoot>

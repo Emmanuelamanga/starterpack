@@ -72,7 +72,9 @@
                             @auth
                                 @if (Auth::check()) 
                                      @if (Auth::user()->is_admin == 1) 
-                                     <!-- admin links -->
+                                     <!-- admin user links -->
+                                     <a class="nav-link" href="{{route('home')}}">{{ __('Home') }}</a>
+                                    <!-- admin only links -->
                                      <a class="nav-link" href="{{route('category.index')}}">{{ __('Category') }}</a>
                                       <a class="nav-link" href="{{route('subcategory.index')}}">{{ __('Sub-Category') }}</a>
                                       <a class="nav-link" href="{{route('subcatitem.index')}}">{{ __('Material') }}</a>
