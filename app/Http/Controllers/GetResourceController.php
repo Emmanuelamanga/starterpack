@@ -88,12 +88,12 @@ class GetResourceController extends Controller
             ]
         );
         // confirm if user already has resource
-        $check = SubCatItem::where('subcatid', $data['subcat'])
-                    ->where('authorid',Auth::user()->id)
-                    ->where('grpid', $data['grp'])->exists();
-        if ($check) {
-            return redirect()->back()->with('info', 'Resource Already availed'); 
-        }
+        // $check = SubCatItem::where('subcatid', $data['subcat'])
+        //             ->where('authorid',Auth::user()->id)
+        //             ->where('grpid', $data['grp'])->exists();
+        // if ($check) {
+        //     return redirect()->back()->with('info', 'Resource Already availed'); 
+        // }
         // GetResource::create($data);
         $newdata = new GetResource;
         $newdata->subcatitemid = $request->subcat;

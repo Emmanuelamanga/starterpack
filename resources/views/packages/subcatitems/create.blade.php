@@ -128,7 +128,7 @@
             </div>
             <!-- description -->
             <div class="form-group row">
-                <label for="filename" class="col-md-4 col-form-label text-md-right">{{ __('filenameription') }}</label>
+                <label for="filename" class="col-md-4 col-form-label text-md-right">{{ __('Upload File:') }}</label>
                 <div class="col-md-4">
                     <input id="filename" type="file" class="form-control @error('filename') is-invalid @enderror" name="filename" required >
                     @error('filename')

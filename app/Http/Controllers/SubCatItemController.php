@@ -19,7 +19,7 @@ class SubCatItemController extends Controller
     public function index()
     {
         return view('packages.subcatitems.index')
-                ->with('subcatitems',SubCatItem::all());
+            ->with('subcatitems', SubCatItem::all());
     }
 
     /**
@@ -30,8 +30,8 @@ class SubCatItemController extends Controller
     public function create()
     {
         return view('packages.subcatitems.create')
-                ->with('categories',PackageCategory::all())
-                ->with('subcats', PackageSubcategory::all());
+            ->with('categories', PackageCategory::all())
+            ->with('subcats', PackageSubcategory::all());
     }
 
     /**
@@ -42,34 +42,36 @@ class SubCatItemController extends Controller
      */
     public function store(Request $request)
     {
-        
-    
+
+
 
         $input = $request->all();
-        $this->validate($request,
+        $this->validate(
+            $request,
             [
-                'cat'=>'required',
-                'grp'=>'required',
-                'subcat'=>'required',
+                'cat' => 'required',
+                'grp' => 'required',
+                'subcat' => 'required',
                 // 'desc'=>'required',
-                'filename' =>'required|file|mimes:pdf,doc,docx,xls,mp3,mp4,pub|max:2048'
+                'filename' => 'required|file|mimes:pdf,doc,docx,xls,mp3,mp4,pub|max:2048'
 
-            ]);
-             // $path = $request->file('filename')->store('materials');
+            ]
+        );
+        // $path = $request->file('filename')->store('materials');
 
-         // cache the file
+        // cache the file
         $file = $request->file('filename');
 
         // generate a new filename. getClientOriginalExtension() for the file extension
         $filename = 'Item-' . time() . '.' . $file->getClientOriginalExtension();
 
-            $subcatrec = new SubCatItem;
-            $subcatrec->catid = $request->cat;
-            $subcatrec->grpid = $request->grp;
-            $subcatrec->subcatid = $request->subcat;
-            $subcatrec->file_name =  $filename; 
-            $subcatrec->authorid = Auth::user()->id;
-            $subcatrec->save();
+        $subcatrec = new SubCatItem;
+        $subcatrec->catid = $request->cat;
+        $subcatrec->grpid = $request->grp;
+        $subcatrec->subcatid = $request->subcat;
+        $subcatrec->file_name =  $filename;
+        $subcatrec->authorid = Auth::user()->id;
+        $subcatrec->save();
 
 
 
@@ -77,10 +79,10 @@ class SubCatItemController extends Controller
         $path = $file->storeAs('materials', $filename);
 
 
-            
 
 
-            return redirect()->route('subcatitem.index')->with('success','Sub-Category Item Added');
+
+        return redirect()->route('subcatitem.index')->with('success', 'Sub-Category Item Added');
     }
 
     /**
