@@ -7,6 +7,7 @@ use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\GetResource;
+use App\SubCatItem;
 
 class SearchController extends Controller
 {
@@ -84,5 +85,36 @@ class SearchController extends Controller
            
             return $output;
         }
+    }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function setgroup(Request $request)
+    {
+        // dd($request);
+        // process the requested item batch batch
+        $data = $request->all();
+        $this->validate(
+            $request,
+            [
+                'cat' => 'required',
+                'grp' => 'required',
+            ]
+        );
+
+        $items = SubCatItem::where('catid', $data['cat'])
+            ->where('grpid', $data['grp'])
+            ->get();
+        // dd($items);
+        if (count($items) < 1) {
+            return redirect()->back()->with('info', 'Sorry No Items for that selection.');
+        }
+
+        return view('packages.getresources.showitems')
+            ->with('items', $items)
+            ->with('subcat', new PackageSubcategory);
     }
   }

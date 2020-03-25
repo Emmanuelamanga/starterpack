@@ -27,8 +27,8 @@ class AddColumnsToSubCatItemsTable extends Migration
     public function down()
     {
         Schema::table('sub_cat_items', function (Blueprint $table) {
-            $table->deleteColumn('catid');
-            $table->deleteColumn('grpid');
+            $table->dropColumn('catid');
+            $table->dropColumn('grpid');
         });
     }
 }

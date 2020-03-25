@@ -78,8 +78,9 @@ Route::middleware(['is_admin','verified'])->group(function () {
 	Route::get('/getresource/{id}','GetResourceController@show')->name('getresource.show');
 	Route::get('/getresource/{id}/delete','GetResourceController@destroy')->name('getresource.destroy');
 	Route::get('/creategetresource','GetResourceController@create')->name('getresource.create');
+	// // in the search controller
+	Route::post('/setgroupresource','SearchController@setgroup')->name('getresource.setgroup');
 	Route::post('/storegetresource','GetResourceController@store')->name('getresource.store');
-	Route::post('/setgroupresource','GetResourceController@setgroup')->name('getresource.setgroup');
 	Route::post('/getresource/update/{id}','GetResourceController@update')->name('getresource.update');
 // for logs
 	Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');

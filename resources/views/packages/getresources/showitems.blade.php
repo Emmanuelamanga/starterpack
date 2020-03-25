@@ -5,8 +5,8 @@
     <div class="card-header"> <span style="font-size: 23px;">AVAILABLE ITEMS</span></div>
         
             <div class="card-body"> 
-                <form method="POST" action="{{route('getresource.store')}}" >
-            @csrf              
+            <form method="post" action="{{route('getresource.store')}}" >
+                @csrf             
                 <table id="myTable" class="display table table-bordered table-condensed table-striped">
                     <thead>
                         <tr>
@@ -18,10 +18,9 @@
                     </thead>
                     <tbody>
                         @if(count($items) > 0 )
-
-                        @foreach($items as $item)
+                        @foreach($items as $key => $item)
                         <tr>
-                            <td>{{$item->id}}</td>
+                            <td>{{$key+1}}</td>
                             <td>{{$subcat->getsubcategory($item->catid)->sub_title}}</td>
                             <td>{{$subcat->getsubcategory($item->catid)->sub_desc}}</td>
                             <td><input type="checkbox" class="form-control"  value="{{$item->id}}" name="item[]"></td>
@@ -35,7 +34,7 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                             <th>SN</th>
+                            <th>SN</th>
                             <th>TITLE</th>
                             <th>DESCRIPTION</th>
                             <th>SELECT</th>
@@ -47,6 +46,5 @@
                 </button>
             </form>
             </div>
-        
     </div>
     @endsection

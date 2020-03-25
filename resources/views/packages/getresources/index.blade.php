@@ -30,18 +30,16 @@
                         </thead>
                         <tbody>
                             @if(count($resources) > 0 )
-                            @foreach($resources as $item)
+                            @foreach($resources as $key=>$item)
                             <tr>
-                                <td>{{$item->id}}</td>
+                                <td>{{$key+1}}</td>
                                 <td>{{$subcat->getSubcategory($item->subcatitemid)->sub_title}}</td>
-                                <!-- <td>{{$item->sub_title}}</td> -->
                                 <td>{{$subcat->getSubcategory($item->subcatitemid)->sub_desc}}</td>
                                 <td>{{$item->created_at}}</td>
                                 <td>{{$item->updated_at}}</td>
-                                <!-- <td>{{$item->sub_authorid}}</td> -->
                                 <td style="text-align:center">
                                     <!-- {{-- view single item --}} -->
-                                    <a href="{{route('getresource.show', ['id'=> $item->id])}}" class="view" data-toggle="tooltip" data-title="View getresource"><i class="fa fa-eye" style="font-size:15px;"></i>View</a>&nbsp;&nbsp;
+                                    <a href="{{route('getresource.show', ['id'=>$item->id])}}" class="view" data-toggle="tooltip" data-title="View getresource"><i class="fa fa-eye" style="font-size:15px;"></i>View</a>&nbsp;&nbsp;
                                     <!-- {{-- edit getresource section --}} -->
                                     <!-- <a href="{{route('getresource.edit', ['id'=>$item->id])}}" class="view" data-title="Edit Resource" data-toggle="tooltip"><i class="fa fa-edit" style="font-size:15px;"></i>Edit</a>&nbsp; -->
                                     <!-- {{--delete btn--}} -->

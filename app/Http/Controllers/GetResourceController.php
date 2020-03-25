@@ -32,27 +32,18 @@ class GetResourceController extends Controller
      */
     public function index()
     {
-        // tables 
-        // package_subcategories
-        // sub_cat_items
-        // material_groups
 
-        // $data = DB::table('package_subcategories')
-        //     // ->where('package_subcategories.catid',  1)
-        //     ->join('sub_cat_items', 'package_subcategories.id', '=', 'sub_cat_items.subcatid')
-        //     ->join('material_groups', 'package_subcategories.classid', '=', 'material_groups.id')
-        //     ->whereNull('sub_cat_items.deleted_at')
-        //     ->get();
-
-        // // dd(json_encode($data));
-        //     dd($data);
-
-        $resource = GetResource::where('userid', Auth::user()->id)->get();
-        $pack = new  PackageSubcategory;
+        $resource = DB::table('get_resources')
+            // ->select('id', 'subcatitemid', 'userid', 'created_at', 'updated_at', 'deleted_at')
+            ->where('userid',  Auth::user()->id)
+            ->groupBy('subcatitemid')
+            ->get();
+        // $resource = DB::select('SELECT  * FROM get_resources WHERE userid=? GROUP BY subcatitemid',[Auth::user()->id]);
+        // dd($resource);
 
         return view('packages.getresources.index')
             ->with('resources', $resource)
-            ->with('subcat', $pack);
+            ->with('subcat', new  PackageSubcategory);
     }
 
     /**
@@ -67,35 +58,7 @@ class GetResourceController extends Controller
             ->with('categories', PackageCategory::all())
             ->with('groups', MaterialGroup::all());
     }
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function setgroup(Request $request)
-    {
-        // dd($request);
-        // process the requested item batch batch
-        $data = $request->all();
-        $this->validate(
-            $request,
-            [
-                'cat' => 'required',
-                'grp' => 'required',
-            ]
-        );
-        $items = SubCatItem::where('catid', $data['cat'])
-            ->where('grpid', $data['grp'])->get();
-        // dd($items);
-        if (count($items) < 1) {
-            return redirect()->back()->with('info', 'Sorry No Items for that selection.');
-        }
 
-        return view('packages.getresources.showitems')
-            ->with('items', $items)
-            ->with('subcat', new PackageSubcategory);
-    }
     /**
      * Store a newly created resource in storage.
      *
@@ -106,16 +69,14 @@ class GetResourceController extends Controller
     {
         $data = $request->all();
         // dd($data );
-        $this->validate(
-            $request,
-            [
-                'item' => 'required',
-            ]
-        );
+        // $this->validate(
+        //     $request,
+        //     [
+        //         'item[]' => 'required',
+        //     ]
+        // );
 
-        if (count($data) < 1) {
-            return redirect()->back()->with('info', 'Select Atleast one item to process. !! ');
-        }
+
         // confirm if user already has resource
         // $check = SubCatItem::where('subcatid', $data['subcat'])
         //             ->where('authorid',Auth::user()->id)
@@ -123,13 +84,22 @@ class GetResourceController extends Controller
         // if ($check) {
         //     return redirect()->back()->with('info', 'Resource Already availed'); 
         // }
-        // GetResource::create($data);
-        $newdata = new GetResource;
-        for ($i = 0; $i < count($data); $i++) {
+        // GetResource::create($data); 
+
+        for ($i = 0; $i < $dat = count($data) - 1; $i++) {
+            if ($dat < 1) {
+                return redirect()->back()->with('info', 'Select Atleast one item to process. !! ');
+                break;
+            }
+            // dd(count($data)-1);
+            // dd($data['item'][$i]);
+            $newdata = new GetResource;
             $newdata->subcatitemid = $data['item'][$i];
             $newdata->userid =  Auth::user()->id;
+            $newdata->save();
         }
-        $newdata->save();
+
+
 
         return redirect()->route('getresource.index')->with('success', 'Resource availed');
     }
