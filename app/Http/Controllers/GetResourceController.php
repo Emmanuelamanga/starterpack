@@ -65,10 +65,37 @@ class GetResourceController extends Controller
 
         return view('packages.getresources.create')
             ->with('categories', PackageCategory::all())
-            // ->with('groups', MaterialGroup::all())
-        ;
+            ->with('groups', MaterialGroup::all());
     }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function setgroup(Request $request)
+    {
+        // dd($request);
+        // process the requested item batch batch
+        $data = $request->all();
+        $this->validate(
+            $request,
+            [
+                'cat' => 'required',
+                'grp' => 'required',
+            ]
+        );
+        $items = SubCatItem::where('catid', $data['cat'])
+            ->where('grpid', $data['grp'])->get();
+        // dd($items);
+        if (count($items) < 1) {
+            return redirect()->back()->with('info', 'Sorry No Items for that selection.');
+        }
 
+        return view('packages.getresources.showitems')
+            ->with('items', $items)
+            ->with('subcat', new PackageSubcategory);
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -82,11 +109,13 @@ class GetResourceController extends Controller
         $this->validate(
             $request,
             [
-                'cat' => 'required',
-                'grp' => 'required',
-                'subcat' => 'required',
+                'item' => 'required',
             ]
         );
+
+        if (count($data) < 1) {
+            return redirect()->back()->with('info', 'Select Atleast one item to process. !! ');
+        }
         // confirm if user already has resource
         // $check = SubCatItem::where('subcatid', $data['subcat'])
         //             ->where('authorid',Auth::user()->id)
@@ -96,8 +125,10 @@ class GetResourceController extends Controller
         // }
         // GetResource::create($data);
         $newdata = new GetResource;
-        $newdata->subcatitemid = $request->subcat;
-        $newdata->userid =  Auth::user()->id;
+        for ($i = 0; $i < count($data); $i++) {
+            $newdata->subcatitemid = $data['item'][$i];
+            $newdata->userid =  Auth::user()->id;
+        }
         $newdata->save();
 
         return redirect()->route('getresource.index')->with('success', 'Resource availed');

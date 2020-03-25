@@ -25,9 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $resource = GetResource::where('userid', Auth::user()->id)->get();
+        // $resource = GetResource::where('userid', Auth::user()->id)->get();
 
-        return view('home')->with('resources',$resource);
+        // return view('home')->with('resources',$resource);
+        return redirect()->route('getresource.index');
     }
 
    
