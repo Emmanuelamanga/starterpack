@@ -89,7 +89,7 @@ class GetResourceController extends Controller
 
         for($i = 0; $i < $dat = count($data) - 1; $i++){
             // dd(count($data)-1);
-            dd($data['item'][$i]);
+            // dd($data['item'][$i]);
             $newdata = new GetResource;
             $newdata->subcatitemid = $data['item'][$i];
             $newdata->userid =  Auth::user()->id;
