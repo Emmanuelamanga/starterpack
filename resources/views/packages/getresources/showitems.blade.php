@@ -6,7 +6,7 @@
         
             <div class="card-body"> 
             <form method="post" action="{{route('getresource.store')}}" >
-                @csrf             
+            {!! csrf_field() !!}          
                 <table id="myTable" class="display table table-bordered table-condensed table-striped">
                     <thead>
                         <tr>

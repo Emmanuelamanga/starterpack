@@ -68,6 +68,7 @@ class GetResourceController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        
         // dd($data );
         // $this->validate(
         //     $request,
@@ -86,13 +87,9 @@ class GetResourceController extends Controller
         // }
         // GetResource::create($data); 
 
-        for ($i = 0; $i < $dat = count($data) - 1; $i++) {
-            if ($dat < 1) {
-                return redirect()->back()->with('info', 'Select Atleast one item to process. !! ');
-                break;
-            }
+        for($i = 0; $i < $dat = count($data) - 1; $i++){
             // dd(count($data)-1);
-            // dd($data['item'][$i]);
+            dd($data['item'][$i]);
             $newdata = new GetResource;
             $newdata->subcatitemid = $data['item'][$i];
             $newdata->userid =  Auth::user()->id;
