@@ -28,9 +28,9 @@ class PackageSubcategoryController extends Controller
      */
     public function index()
     {
-        $subcats = PackageSubcategory::all();
+        $subcats = PackageSubcategory::groupBy('classid')->get();
          return view('packages.subcategories.index')
-            ->with('subcats', $subcats);
+                ->with('subcats', $subcats);
 
     }
 

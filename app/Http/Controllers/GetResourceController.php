@@ -36,6 +36,7 @@ class GetResourceController extends Controller
         $resource = DB::table('get_resources')
             // ->select('id', 'subcatitemid', 'userid', 'created_at', 'updated_at', 'deleted_at')
             ->where('userid',  Auth::user()->id)
+            ->where('deleted_At', NULL)
             ->groupBy('subcatitemid')
             ->get();
         // $resource = DB::select('SELECT  * FROM get_resources WHERE userid=? GROUP BY subcatitemid',[Auth::user()->id]);
@@ -147,7 +148,9 @@ class GetResourceController extends Controller
      */
     public function destroy($getResource)
     {
-        GetResource::where('id', $getResource)->delete();
+        GetResource::where('id', $getResource)
+                    ->where('userid',  Auth::user()->id)
+                    ->delete();
         return redirect()->route('getresource.index')->with('success', 'Resource Removed ');
     }
 }

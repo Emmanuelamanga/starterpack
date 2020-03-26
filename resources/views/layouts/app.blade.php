@@ -77,7 +77,7 @@
                                     <!-- admin only links -->
                                      <a class="nav-link" href="{{route('category.index')}}">{{ __('Category') }}</a>
                                       <a class="nav-link" href="{{route('subcategory.index')}}">{{ __('Sub-Category') }}</a>
-                                      <a class="nav-link" href="{{route('subcatitem.index')}}">{{ __('Material') }}</a>
+                                      <a class="nav-link" href="{{route('subcatitem.index')}}">{{ __('Sub-Category-Item') }}</a>
                                      <a class="nav-link" href="{{route('materialgroup.index')}}">{{ __('Classroom') }}</a>
                                       @elseif(Auth::user()->is_admin == 0)
                                     <!-- user links -->

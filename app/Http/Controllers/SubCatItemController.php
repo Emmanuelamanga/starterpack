@@ -18,6 +18,7 @@ class SubCatItemController extends Controller
      */
     public function index()
     {
+        // dd(SubCatItem::all());
         return view('packages.subcatitems.index')
             ->with('subcatitems', SubCatItem::all());
     }
@@ -53,36 +54,37 @@ class SubCatItemController extends Controller
                 'grp' => 'required',
                 'subcat' => 'required',
                 // 'desc'=>'required',
-                'filename' => 'required|file|mimes:pdf,doc,docx,xls,mp3,mp4,pub|max:2048'
+                'filename' => 'required|file|mimes:pptx,pdf,doc,docx,xls,mp3,mp4,pub|max:2048'
 
             ]
         );
-        // $path = $request->file('filename')->store('materials');
-
+       
+        // new subcatitem instance
+        $subcatrec = new SubCatItem;
         // cache the file
         $file = $request->file('filename');
-
         // generate a new filename. getClientOriginalExtension() for the file extension
         $filename = 'Item-' . time() . '.' . $file->getClientOriginalExtension();
 
-        $subcatrec = new SubCatItem;
+      
         $subcatrec->catid = $request->cat;
         $subcatrec->grpid = $request->grp;
         $subcatrec->subcatid = $request->subcat;
-        $subcatrec->file_name =  $filename;
+        $subcatrec->file_name =  $filename; 
+        // store the file
+        // $request->file('Item-' . time() . '.' . $file->getClientOriginalExtension())->store('public/materials/');
+        // save to storage/app/public/materials as the new $filename
+        $path = $file->storeAs('public/materials', $filename);
         $subcatrec->authorid = Auth::user()->id;
         $subcatrec->save();
 
+       
 
+        // save to storage/app/public/materials as the new $filename
+        // $path = $file->storeAs('public/materials', $filename);
 
-        // save to storage/app/materials as the new $filename
-        $path = $file->storeAs('materials', $filename);
-
-
-
-
-
-        return redirect()->route('subcatitem.index')->with('success', 'Sub-Category Item Added');
+        return redirect()->route('subcatitem.index')
+            ->with('success', 'Sub-Category Item Added');
     }
 
     /**
@@ -91,9 +93,13 @@ class SubCatItemController extends Controller
      * @param  \App\SubCatItem  $subCatItem
      * @return \Illuminate\Http\Response
      */
-    public function show(SubCatItem $subCatItem)
+    public function show($subCatItem)
     {
-        //
+        $item = SubCatItem::find($subCatItem);
+        // dd($item->file_name);
+        return view('packages.subcatitems.show')
+            ->with('item', $item)
+            ->with('subcat', new PackageSubcategory);
     }
 
     /**
