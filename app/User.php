@@ -49,5 +49,9 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $dates = ['deleted_at'];
+        // function that gets the user details using the id
+    public function getUser($id){
+        return user::where('id', $id)->first();
+    }
 
 }
