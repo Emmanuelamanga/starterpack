@@ -6,15 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class PackageCategory extends Model
-{ 
-	use SoftDeletes;
-	
-	protected $table = 'package_categories';
-	
-    protected $fillable = 
+{
+    use SoftDeletes;
+
+    protected $table = 'package_categories';
+
+    protected $fillable =
     [
-    	'title',
-		'discription',
+        'title',
+        'discription',
         'creatorid',
     ];
 
@@ -27,7 +27,8 @@ class PackageCategory extends Model
      */
     protected $dates = ['deleted_at'];
 
-    public function getCategory($id){
-        return PackageCategory::where('id',$id)->first();
+    public function getCategory($id)
+    {
+        return PackageCategory::where('id', $id)->first();
     }
 }

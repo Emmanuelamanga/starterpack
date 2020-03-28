@@ -1,18 +1,19 @@
 <?php
+
 namespace App;
 
-   
+
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
-   
+
 class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 
     /**
-   * The attributes that are mass assignable.
+     * The attributes that are mass assignable.
      *
      * @var array
 
@@ -38,9 +39,9 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var array
      */
-     protected $casts = [
-            'email_verified_at' => 'datetime',
-        ];
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
     use SoftDeletes;
 
     /**
@@ -49,9 +50,9 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $dates = ['deleted_at'];
-        // function that gets the user details using the id
-    public function getUser($id){
+    // function that gets the user details using the id
+    public function getUser($id)
+    {
         return user::where('id', $id)->first();
     }
-
 }

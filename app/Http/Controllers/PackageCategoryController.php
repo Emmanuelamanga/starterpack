@@ -6,6 +6,7 @@ use App\PackageCategory;
 use Illuminate\Http\Request;
 use Auth;
 use DB;
+
 class PackageCategoryController extends Controller
 {
     /**
@@ -15,7 +16,7 @@ class PackageCategoryController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth','is_admin']);
+        $this->middleware(['auth', 'is_admin']);
     }
 
     /**
@@ -47,11 +48,13 @@ class PackageCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,
+        $this->validate(
+            $request,
             [
-                'cat'=>'required',
-                'desc'=>'required'
-            ]);
+                'cat' => 'required',
+                'desc' => 'required'
+            ]
+        );
 
         $record = new PackageCategory;
         $record->title = $request->cat;
@@ -59,7 +62,7 @@ class PackageCategoryController extends Controller
         $record->creatorid = Auth::user()->id;
         $record->save();
 
-        return redirect()->route('category.index',['success'=>'Category Added']);
+        return redirect()->route('category.index', ['success' => 'Category Added']);
     }
 
     /**
@@ -69,10 +72,10 @@ class PackageCategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($packageCategory)
-    {   
+    {
         $pc = PackageCategory::find($packageCategory);
         // dd($pc);
-         return view('packages.categories.show')->with('category', $pc);
+        return view('packages.categories.show')->with('category', $pc);
     }
 
     /**
@@ -81,11 +84,11 @@ class PackageCategoryController extends Controller
      * @param  \App\PackageCategory  $packageCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit( $packageCategory)
-    {  
+    public function edit($packageCategory)
+    {
         $pc = PackageCategory::find($packageCategory);
-     // dd($pc);
-         return view('packages.categories.edit')->with('category',$pc);
+        // dd($pc);
+        return view('packages.categories.edit')->with('category', $pc);
     }
 
     /**
@@ -97,21 +100,23 @@ class PackageCategoryController extends Controller
      */
     public function update(Request $request, $packageCategory)
     {
-         $this->validate($request,
+        $this->validate(
+            $request,
             [
-                'cat'=>'required',
-                'desc'=>'required'
-            ]);
+                'cat' => 'required',
+                'desc' => 'required'
+            ]
+        );
 
         DB::table('package_categories')
-        ->where('id', $packageCategory)
-        ->update([
-             'title' => $request->cat,
-            'discription' => $request->desc,
-            'creatorid' => Auth::user()->id,
-        ]);
+            ->where('id', $packageCategory)
+            ->update([
+                'title' => $request->cat,
+                'discription' => $request->desc,
+                'creatorid' => Auth::user()->id,
+            ]);
 
-        return redirect()->route('category.index')->with('success','Category Updated');
+        return redirect()->route('category.index')->with('success', 'Category Updated');
     }
 
     /**
@@ -121,8 +126,8 @@ class PackageCategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($packageCategory)
-    { 
-        
+    {
+
         PackageCategory::where('id', $packageCategory)->delete();
         // dd($packageCategory);
         // // $pc->id->delete();

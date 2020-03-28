@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
@@ -11,78 +12,79 @@ use App\SubCatItem;
 
 class SearchController extends Controller
 {
-    public function search(Request $request){
-        
-        if($request->ajax()) {
-          
+    public function search(Request $request)
+    {
+
+        if ($request->ajax()) {
+
             // $data = PackageSubcategory::where('catid', 'LIKE', $request->cat.'%')
-            		// ->join('')
-                	// ->get();
-             $data = PackageSubcategory::where('catid', 'LIKE', $request->cat.'%')
-                    ->leftJoin('material_groups', 'package_subcategories.classid', '=', 'material_groups.id')
-                    ->get();
+            // ->join('')
+            // ->get();
+            $data = PackageSubcategory::where('catid', 'LIKE', $request->cat . '%')
+                ->leftJoin('material_groups', 'package_subcategories.classid', '=', 'material_groups.id')
+                ->get();
             // $data = DB::table('package_subcategories')
             //         ->where('catid', 'LIKE', $request->cat.'%')
             //         ->leftJoin('material_groups', 'package_subcategories.classid', '=', 'material_groups.id')
             //         ->get();
 
-           
-          
-           
-            if ($count = count($data)>0) {
-              
+
+
+
+            if ($count = count($data) > 0) {
+
                 // $output = '<ul class="list-group" style="display: block; position: relative; z-index: 1">';
-              
+
                 // foreach ($data as $row){
-                   
+
                 //     $output .= '<li class="list-group-item">'.$row->sub_title.'</li>';
                 // }
-              
+
                 // $output .= '</ul>';
 
                 $output = $data;
-                 json_encode($output);
+                json_encode($output);
 
-                 // for ($i=0; $i < $count; $i++) { 
-                 //    if () {
-                        
-                 //    }
-                 // }
+                // for ($i=0; $i < $count; $i++) { 
+                //    if () {
 
-            }else {
-             
+                //    }
+                // }
+
+            } else {
+
                 // $output .= '<li class="list-group-item">'.'No results'.'</li>';
-                  $output = '';
+                $output = '';
             }
-           
+
             return $output;
         }
     }
- public function searchresource(Request $request){
-        
-        if($request->ajax()) {
-          
-    // $data = PackageSubcategory::where('catid', 'LIKE', $request->cat.'%')
-    //                 ->leftJoin('material_groups', 'package_subcategories.classid', '=', 'material_groups.id')
-    //                 ->get();
-           
-      $data = DB::table('package_subcategories')
-              ->where('package_subcategories.catid', 'LIKE', $request->cat.'%')
-              ->join('sub_cat_items', 'package_subcategories.id', '=', 'sub_cat_items.subcatid')
-              ->join('material_groups', 'package_subcategories.catid', '=', 'material_groups.id')
-              ->whereNull('sub_cat_items.deleted_at')
-              ->get();
+    public function searchresource(Request $request)
+    {
 
-            if ($count = count($data)>0) {
+        if ($request->ajax()) {
+
+            // $data = PackageSubcategory::where('catid', 'LIKE', $request->cat.'%')
+            //                 ->leftJoin('material_groups', 'package_subcategories.classid', '=', 'material_groups.id')
+            //                 ->get();
+
+            $data = DB::table('package_subcategories')
+                ->where('package_subcategories.catid', 'LIKE', $request->cat . '%')
+                ->join('sub_cat_items', 'package_subcategories.id', '=', 'sub_cat_items.subcatid')
+                ->join('material_groups', 'package_subcategories.catid', '=', 'material_groups.id')
+                ->whereNull('sub_cat_items.deleted_at')
+                ->get();
+
+            if ($count = count($data) > 0) {
 
                 $output = $data;
-                 json_encode($output);
+                json_encode($output);
+            } else {
 
-            }else {
-
-                  $output = '';
+                $output = '';
             }
-           
+
             return $output;
         }
     }
@@ -117,4 +119,4 @@ class SearchController extends Controller
             ->with('items', $items)
             ->with('subcat', new PackageSubcategory);
     }
-  }
+}

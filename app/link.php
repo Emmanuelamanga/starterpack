@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class link extends Model
 {
-	use SoftDeletes;
+    use SoftDeletes;
 
     /**
      * The attributes that should be mutated to dates.
@@ -15,8 +15,8 @@ class link extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
-    
-   protected $fillable = [
+
+    protected $fillable = [
         'title',
         'url',
         'description'

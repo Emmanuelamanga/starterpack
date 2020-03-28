@@ -17,12 +17,11 @@ class IsAdmin
     public function handle($request, Closure $next)
     {
         // check auth user if admin 
-        if(auth()->user()->is_admin == 1){
+        if (auth()->user()->is_admin == 1) {
 
             return $next($request);
-
-        }   
+        }
         // for false redirect home with an error message 
-        return redirect('home')->with('error',"You don\'t have admin access.");
+        return redirect('home')->with('error', "You don\'t have admin access.");
     }
 }

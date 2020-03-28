@@ -70,7 +70,7 @@ class GetResourceController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        
+
         // dd($data );
         // $this->validate(
         //     $request,
@@ -89,7 +89,7 @@ class GetResourceController extends Controller
         // }
         // GetResource::create($data); 
 
-        for($i = 0; $i < $dat = count($data) - 1; $i++){
+        for ($i = 0; $i < $dat = count($data) - 1; $i++) {
             // dd(count($data)-1);
             // dd($data['item'][$i]);
             $newdata = new GetResource;
@@ -154,8 +154,8 @@ class GetResourceController extends Controller
     public function destroy($getResource)
     {
         GetResource::where('id', $getResource)
-                    ->where('userid',  Auth::user()->id)
-                    ->delete();
+            ->where('userid',  Auth::user()->id)
+            ->delete();
         return redirect()->route('getresource.index')->with('success', 'Resource Removed ');
     }
 }

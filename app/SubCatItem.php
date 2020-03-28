@@ -10,12 +10,11 @@ class SubCatItem extends Model
     use softDeletes;
 
     protected $table = 'sub_cat_items';
-    
+
     /**
      * The attributes that should be mutated to dates.
      *
      * @var array
      */
     protected $dates = ['deleted_at'];
-
 }

@@ -7,21 +7,20 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class GetResource extends Model
 {
-      use softDeletes;
+  use softDeletes;
 
-    protected $table = 'get_resources';
-    
-    /**
-     * The attributes that should be mutated to dates.
-     *
-     * @var array
-     */
-    protected $dates = ['deleted_at'];
+  protected $table = 'get_resources';
 
-    protected $fillable = 
-    [
-    	'subcatitemid',
-		  'userid'
-    ];
+  /**
+   * The attributes that should be mutated to dates.
+   *
+   * @var array
+   */
+  protected $dates = ['deleted_at'];
 
+  protected $fillable =
+  [
+    'subcatitemid',
+    'userid'
+  ];
 }

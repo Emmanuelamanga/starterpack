@@ -6,20 +6,20 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-	 /**
+    /**
      * Create a new controller instance.
      *
      * @return void
      */
     public function __construct()
     {
-        $this->middleware(['auth','verified','is_admin']);
+        $this->middleware(['auth', 'verified', 'is_admin']);
     }
 
-     /**
-    *show the admin home page
-    *@return \Illuminate\Contracts\Support\Renderable
-    */
+    /**
+     *show the admin home page
+     *@return \Illuminate\Contracts\Support\Renderable
+     */
     public function adminHome()
     {
         return view('admin.adminHome');

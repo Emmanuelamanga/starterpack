@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth','verified']);
+        $this->middleware(['auth', 'verified']);
     }
 
     /**
@@ -30,6 +30,4 @@ class HomeController extends Controller
         // return view('home')->with('resources',$resource);
         return redirect()->route('getresource.index');
     }
-
-   
 }

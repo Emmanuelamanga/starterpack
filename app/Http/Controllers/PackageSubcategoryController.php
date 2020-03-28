@@ -18,7 +18,7 @@ class PackageSubcategoryController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth','is_admin']);
+        $this->middleware(['auth', 'is_admin']);
     }
 
     /**
@@ -29,9 +29,8 @@ class PackageSubcategoryController extends Controller
     public function index()
     {
         $subcats = PackageSubcategory::groupBy('classid')->get();
-         return view('packages.subcategories.index')
-                ->with('subcats', $subcats);
-
+        return view('packages.subcategories.index')
+            ->with('subcats', $subcats);
     }
 
     /**
@@ -41,9 +40,9 @@ class PackageSubcategoryController extends Controller
      */
     public function create()
     {
-         return view('packages.subcategories.create')
+        return view('packages.subcategories.create')
             ->with('categories', PackageCategory::all())
-                ->with('classrooms', MaterialGroup::all());
+            ->with('classrooms', MaterialGroup::all());
     }
 
     /**
@@ -55,24 +54,26 @@ class PackageSubcategoryController extends Controller
     public function store(Request $request)
     {
         // dd($request);
-         $this->validate($request,
+        $this->validate(
+            $request,
             [
-                'cat'=>'required',
-                'desc'=>'required',
-                'grp'=>'required',
-                'subcat'=>'required',
+                'cat' => 'required',
+                'desc' => 'required',
+                'grp' => 'required',
+                'subcat' => 'required',
 
-            ]);
+            ]
+        );
 
-            $subcatrec = new PackageSubcategory;
-            $subcatrec->catid = $request->cat;
-            $subcatrec->classid = $request->grp;
-            $subcatrec->sub_title = $request->subcat;
-            $subcatrec->sub_desc = $request->desc;        
-            $subcatrec->sub_authorid = Auth::user()->id;
-            $subcatrec->save();
+        $subcatrec = new PackageSubcategory;
+        $subcatrec->catid = $request->cat;
+        $subcatrec->classid = $request->grp;
+        $subcatrec->sub_title = $request->subcat;
+        $subcatrec->sub_desc = $request->desc;
+        $subcatrec->sub_authorid = Auth::user()->id;
+        $subcatrec->save();
 
-        return redirect()->route('subcategory.index')->with('success','Sub-Category Added');
+        return redirect()->route('subcategory.index')->with('success', 'Sub-Category Added');
     }
 
     /**
@@ -81,10 +82,10 @@ class PackageSubcategoryController extends Controller
      * @param  \App\PackageSubcategory  $packageSubcategory
      * @return \Illuminate\Http\Response
      */
-    public function show( $packageSubcategory)
+    public function show($packageSubcategory)
     {
-         $spc = PackageSubcategory::find($packageSubcategory);
-         return view('packages.subcategories.show')->with('subcat', $spc);
+        $spc = PackageSubcategory::find($packageSubcategory);
+        return view('packages.subcategories.show')->with('subcat', $spc);
     }
 
     /**
@@ -93,10 +94,10 @@ class PackageSubcategoryController extends Controller
      * @param  \App\PackageSubcategory  $packageSubcategory
      * @return \Illuminate\Http\Response
      */
-    public function edit( $packageSubcategory)
+    public function edit($packageSubcategory)
     {
-         $spc = PackageSubcategory::find($packageSubcategory);
-         return view('packages.subcategories.edit')->with('subcategory', $spc);
+        $spc = PackageSubcategory::find($packageSubcategory);
+        return view('packages.subcategories.edit')->with('subcategory', $spc);
     }
 
     /**
@@ -108,21 +109,23 @@ class PackageSubcategoryController extends Controller
      */
     public function update(Request $request, $packageSubcategory)
     {
-         $this->validate($request,
+        $this->validate(
+            $request,
             [
-                'cat'=>'required',
-                'desc'=>'required'
-            ]);
+                'cat' => 'required',
+                'desc' => 'required'
+            ]
+        );
 
         DB::table('package_subcategories')
-        ->where('id', $packageSubcategory)
-        ->update([
-             'sub_title' => $request->cat,
-            'sub_desc' => $request->desc,
-            'sub_authorid' => Auth::user()->id,
-        ]);
+            ->where('id', $packageSubcategory)
+            ->update([
+                'sub_title' => $request->cat,
+                'sub_desc' => $request->desc,
+                'sub_authorid' => Auth::user()->id,
+            ]);
 
-        return redirect()->route('subcategory.index')->with('success','Sub-Category Updated');
+        return redirect()->route('subcategory.index')->with('success', 'Sub-Category Updated');
     }
 
     /**
@@ -133,7 +136,7 @@ class PackageSubcategoryController extends Controller
      */
     public function destroy($packageSubcategory)
     {
-        
+
         PackageSubcategory::where('id', $packageSubcategory)->delete();
         return redirect()->route('subcategory.index')->with('success', 'Sub Category Deleted');
     }

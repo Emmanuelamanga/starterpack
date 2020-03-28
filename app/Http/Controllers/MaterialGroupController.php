@@ -17,8 +17,8 @@ class MaterialGroupController extends Controller
     public function index()
     {
         $matg = MaterialGroup::all();
-         return view('packages.materialgroups.index')
-                ->with('materialgroups', $matg);
+        return view('packages.materialgroups.index')
+            ->with('materialgroups', $matg);
     }
 
     /**
@@ -41,11 +41,13 @@ class MaterialGroupController extends Controller
     {
         $input = $request->all();
 
-        $this->validate($request, 
+        $this->validate(
+            $request,
             [
                 'classname' => 'required',
                 'desc' => 'required'
-            ]);
+            ]
+        );
 
         $newroom = new MaterialGroup;
         $newroom->room_name = $input['classname'];
@@ -54,8 +56,7 @@ class MaterialGroupController extends Controller
         $newroom->save();
 
 
-        return redirect()->route('materialgroup.index')->with('success','Classroom Added');
-
+        return redirect()->route('materialgroup.index')->with('success', 'Classroom Added');
     }
 
     /**
@@ -67,8 +68,8 @@ class MaterialGroupController extends Controller
     public function show($materialGroup)
     {
         $matg = MaterialGroup::find($materialGroup);
-         return view('packages.materialgroups.show')
-                ->with('materialGroup',  $matg);
+        return view('packages.materialgroups.show')
+            ->with('materialGroup',  $matg);
     }
 
     /**
@@ -80,8 +81,8 @@ class MaterialGroupController extends Controller
     public function edit($materialGroup)
     {
         $matg = MaterialGroup::find($materialGroup);
-         return view('packages.materialgroups.edit')
-                ->with('materialGroup',  $matg);
+        return view('packages.materialgroups.edit')
+            ->with('materialGroup',  $matg);
     }
 
     /**
@@ -93,22 +94,24 @@ class MaterialGroupController extends Controller
      */
     public function update(Request $request, $materialGroup)
     {
-        $this->validate($request, 
+        $this->validate(
+            $request,
             [
                 'classname' => 'required',
                 'desc' => 'required'
-            ]);
+            ]
+        );
 
         DB::table('material_groups')
-        ->where('id', $materialGroup)
-        ->update([
-            'room_name' => $request->classname,
-            'room_desc' =>  $request->desc,
-            'room_authorid' => Auth::user()->id,
-        ]);
+            ->where('id', $materialGroup)
+            ->update([
+                'room_name' => $request->classname,
+                'room_desc' =>  $request->desc,
+                'room_authorid' => Auth::user()->id,
+            ]);
 
         return redirect()->route('materialgroup.index')
-                        ->with('success','Classroom Updated..');
+            ->with('success', 'Classroom Updated..');
     }
 
     /**
@@ -119,7 +122,7 @@ class MaterialGroupController extends Controller
      */
     public function destroy($materialGroup)
     {
-         MaterialGroup::where('id', $materialGroup)->delete();
+        MaterialGroup::where('id', $materialGroup)->delete();
 
         return redirect()->route('materialgroup.index')->with('success', 'Classroom Deleted');
     }

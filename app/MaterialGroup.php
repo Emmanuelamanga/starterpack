@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class MaterialGroup extends Model
 {
-	use softDeletes;
-   
+    use softDeletes;
+
     /**
      * The attributes that should be mutated to dates.
      *
