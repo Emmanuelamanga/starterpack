@@ -44,6 +44,14 @@
         <iframe id="" style="border:1px solid #666CCC" title="PDF in an i-Frame" src="{{Storage::url('materials/'.$item->file_name)}}" frameborder="2" scrolling="auto" height="1100" width="100%"></iframe>
            
         </object>
+        <!-- <iframe  src="{{url('/')}}/{{ Storage::disk('local')->url('materials/'.$item->file_name)}}" type="application/pdf"></iframe> -->
+        {{-- @if($ext ?? '' == 'img')
+            <img src="{{Storage::url('storage/materials/'.$item->file_name)}}"/>
+        @elseif($ext ?? '' == 'pdf')
+            <iframe src="{{Storage::url('storage/materials/'.$item->file_name)}}" frameborder="0" style="width:100%;min-height:640px;"></iframe>
+        @else
+            <iframe src="https://view.officeapps.live.com/op/view.aspx?src={{urlendoe(Storage::url('storage/materials/'.$item->file_name))}}" frameborder="0" style="width:100%;min-height:640px;"></iframe>
+        @endif --}}
             
             <!-- <iframe src ="{{ asset('storage/materials/Item-1584872190.pdf') }}" width="1000px" height="600px"></iframe> -->
             <!-- </object>  -->

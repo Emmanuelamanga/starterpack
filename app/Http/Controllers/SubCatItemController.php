@@ -54,7 +54,7 @@ class SubCatItemController extends Controller
                 'grp' => 'required',
                 'subcat' => 'required',
                 // 'desc'=>'required',
-                'filename' => 'required|file|mimes:pptx,pdf,doc,docx,xls,mp3,mp4,pub|max:2048'
+                'filename' => 'required|file|mimes:pptx,pdf,doc,docx,xls,mp3,mp4,pub|max:6048'
 
             ]
         );
@@ -96,7 +96,7 @@ class SubCatItemController extends Controller
     public function show($subCatItem)
     {
         $item = SubCatItem::find($subCatItem);
-        // dd($item->file_name);
+        // dd($item->file_name->getClientOriginalExtension());
         return view('packages.subcatitems.show')
             ->with('item', $item)
             ->with('subcat', new PackageSubcategory);

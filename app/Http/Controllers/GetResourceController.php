@@ -111,7 +111,7 @@ class GetResourceController extends Controller
     public function show($getResource)
     {
         $item = SubCatItem::find($getResource);
-
+        // dd($item->file_name->getClientOriginalExtension());
         return view('packages.getresources.show')
             ->with('item', $item)
             ->with('subcat', new PackageSubcategory);
