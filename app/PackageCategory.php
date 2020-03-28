@@ -26,4 +26,8 @@ class PackageCategory extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    public function getCategory($id){
+        return PackageCategory::where('id',$id)->first();
+    }
 }

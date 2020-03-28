@@ -36,7 +36,7 @@ class GetResourceController extends Controller
         $resource = DB::table('get_resources')
             // ->select('id', 'subcatitemid', 'userid', 'created_at', 'updated_at', 'deleted_at')
             ->where('userid',  Auth::user()->id)
-            ->where('deleted_At', NULL)
+            ->where('deleted_at', NULL)
             ->groupBy('subcatitemid')
             ->get();
         // $resource = DB::select('SELECT  * FROM get_resources WHERE userid=? GROUP BY subcatitemid',[Auth::user()->id]);
@@ -44,7 +44,8 @@ class GetResourceController extends Controller
 
         return view('packages.getresources.index')
             ->with('resources', $resource)
-            ->with('subcat', new  PackageSubcategory);
+            ->with('subcat', new  PackageSubcategory)
+            ->with('category', new packageCategory);
     }
 
     /**
@@ -110,8 +111,12 @@ class GetResourceController extends Controller
      */
     public function show($getResource)
     {
-        $item = SubCatItem::find($getResource);
+        // $item = SubCatItem::where('id',$getResource)
+        //                     ->where('deleted_at', NULL)
+        //                     ->get();
         // dd($item->file_name->getClientOriginalExtension());
+        $item = SubCatItem::find($getResource);
+
         return view('packages.getresources.show')
             ->with('item', $item)
             ->with('subcat', new PackageSubcategory);

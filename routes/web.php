@@ -53,7 +53,11 @@ Route::middleware(['is_admin','verified'])->group(function () {
 	Route::get('/createsubcatitem','SubCatItemController@create')->name('subcatitem.create');
 	Route::post('/storesubcatitem','SubCatItemController@store')->name('subcatitem.store');
 	Route::post('/subcatitem/update/{id}','SubCatItemController@update')->name('materialgroup.update');
-	
+
+	Route::get('/subcatitem/restore/{id}','SubCatItemController@restoreitem')->name('subcatitem.restore');
+	// view document
+	Route::get('view-document/{id}', 'SubCatItemController@viewdoc');
+
 	// subcategoryitems routes
 	Route::get('search', 'searchController@search')->name('search');
 
