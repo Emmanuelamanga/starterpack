@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Auth;
 use DB;
 use App\MaterialGroup;
+use App\User;
 
 class PackageSubcategoryController extends Controller
 {
@@ -28,9 +29,13 @@ class PackageSubcategoryController extends Controller
      */
     public function index()
     {
-        $subcats = PackageSubcategory::groupBy('classid')->get();
+        $subcats = PackageSubcategory::orderBy('classid')->get();
+        // $subcats = PackageSubcategory::all();
+
         return view('packages.subcategories.index')
-            ->with('subcats', $subcats);
+            ->with('subcats', $subcats)
+            ->with('cat', new PackageCategory)
+            ->with('user', new User);
     }
 
     /**

@@ -7,7 +7,7 @@
         <table id="myTable" class="display table table-bordered table-condensed table-striped">
             <thead>
                 <tr>
-                    <th>SN</th>
+                    <th>#</th>
                     <th>Category</th>
                     <th>Sub-Category</th>
                     <th>Description</th>
@@ -21,9 +21,9 @@
             <tbody>
                 {{--Available sub-category items--}}
                 @if(count($subcatitems) > 0 )
-                @foreach($subcatitems as $subcatitem)
+                @foreach($subcatitems as $key => $subcatitem)
                 <tr>
-                    <td>{{$subcatitem->id}}</td>
+                    <td>{{$key+1}}</td>
                     <td>{{$category->getCategory($subcat->getSubcategory($subcatitem->subcatid)->catid)->title }}</td>
                     <td>{{$subcat->getSubcategory($subcatitem->subcatid)->sub_title}}</td>
                     <td>{{$subcat->getSubcategory($subcatitem->subcatid)->sub_desc}}</td>
@@ -33,11 +33,11 @@
                     <td>{{$user->getUser($subcatitem->authorid)->name}}</td>
                     <td style="text-align:center">
                         <!-- {{-- view single subcatitem --}} -->
-                        <a href="{{route('subcatitem.show', ['id'=> $subcatitem->id])}}" class="view" data-toggle="tooltip" data-title="View subcatitem"><i class="fa fa-eye" style="font-size:15px;"></i></a>&nbsp;&nbsp;
+                        <a href="{{route('subcatitem.show', ['id'=> $subcatitem->id])}}" class="view" data-toggle="tooltip" data-title="View subcatitem"><i class="fa fa-eye" style="font-size:15px;"></i> View</a>&nbsp;&nbsp;
                         <!-- {{-- edit subcatitem section --}} -->
-                        <a href="{{route('subcatitem.edit', ['id'=>$subcatitem->id])}}" class="view" data-title="Edit subcatitem" data-toggle="tooltip"><i class="fa fa-edit" style="font-size:15px;"></i></a>&nbsp;
+                        <a href="{{route('subcatitem.edit', ['id'=>$subcatitem->id])}}" class="view" data-title="Edit subcatitem" data-toggle="tooltip"><i class="fa fa-edit" style="font-size:15px;"></i> Edit</a>&nbsp;
                         <!-- {{--delete btn--}} -->
-                        <a class="btn  btn-sm" onclick="return confirm('Are you sure?')" href="{{route('subcatitem.destroy', ['id'=>$subcatitem->id])}}"><i class="fa fa-trash" style="color:red"></i></a>
+                        <a class="btn  btn-sm" onclick="return confirm('Are you sure?')" href="{{route('subcatitem.destroy', ['id'=>$subcatitem->id])}}"><i class="fa fa-trash" style="color:red"></i> Trash</a>
 
                     </td>
                 </tr>
@@ -50,7 +50,7 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <th>SN</th>
+                    <th>#</th>
                     <th>Category</th>
                     <th>Sub-Category</th>
                     <th>Description</th>
@@ -67,7 +67,7 @@
         <table id="myTable" class="display table table-bordered table-condensed table-striped">
             <thead>
                 <tr>
-                    <th>SN</th>
+                    <th>#</th>
                     <th>Category</th>
                     <th>Sub-Category</th>
                     <th>Description</th>
@@ -82,9 +82,9 @@
             <tbody>
                 {{--Deleetd Subcategory items--}}
                 @if(count($deleteditems)>0)
-                @foreach($deleteditems as $delteditem)
+                @foreach($deleteditems as $key => $delteditem)
                 <tr>
-                    <td>{{$delteditem->id}}</td>
+                    <td>{{$key+1}}</td>
                     <td>{{$category->getCategory($subcat->getSubcategory($delteditem->subcatid)->catid)->title}}</td>
                     <td>{{$subcat->getSubcategory($delteditem->subcatid)->sub_title}}</td>
                     <td>{{$subcat->getSubcategory($delteditem->subcatid)->sub_desc}}</td>
@@ -107,7 +107,7 @@
                 @endif
             <tfoot>
                 <tr>
-                    <th>SN</th>
+                    <th>#</th>
                     <th>Category</th>
                     <th>Sub-Category</th>
                     <th>Description</th>

@@ -11,7 +11,8 @@
                 <thead>
                     <tr>
                         <th>SN</th>
-                        <th>TITLE</th>
+                        <th>CATEGORY</th>
+                        <th>SUBCATEGORY</th>
                         <th>DESCRIPTION</th>
                         <th>SELECT</th>
                     </tr>
@@ -21,6 +22,7 @@
                     @foreach($items as $key => $item)
                     <tr>
                         <td>{{$key+1}}</td>
+                        <td>{{$cat->getcategory($subcat->getsubcategory($item->catid)->catid)->title}}</td>
                         <td>{{$subcat->getsubcategory($item->catid)->sub_title}}</td>
                         <td>{{$subcat->getsubcategory($item->catid)->sub_desc}}</td>
                         <td><input type="checkbox" class="form-control" value="{{$item->id}}" name="item[]"></td>
@@ -34,8 +36,9 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th>SN</th>
-                        <th>TITLE</th>
+                    <th>SN</th>
+                        <th>CATEGORY</th>
+                        <th>SUBCATEGORY</th>
                         <th>DESCRIPTION</th>
                         <th>SELECT</th>
                     </tr>

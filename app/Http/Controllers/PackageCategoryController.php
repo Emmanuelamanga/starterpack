@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\PackageCategory;
+use App\User;
 use Illuminate\Http\Request;
 use Auth;
 use DB;
@@ -27,7 +28,8 @@ class PackageCategoryController extends Controller
     public function index()
     {
         return view('packages.categories.index')
-            ->with('categories', PackageCategory::all());
+                ->with('categories', PackageCategory::all())
+                ->with('user', new User);
     }
 
     /**

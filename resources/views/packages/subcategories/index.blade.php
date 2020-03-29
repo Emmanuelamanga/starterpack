@@ -22,19 +22,19 @@
                 @foreach($subcats as $subcategory)
                 <tr>
                     <td>{{$subcategory->id}}</td>
-                    <td>{{$subcategory->catid}}</td>
+                    <td>{{$cat->getcategory($subcategory->catid)->title}}</td>
                     <td>{{$subcategory->sub_title}}</td>
                     <td>{{$subcategory->sub_desc}}</td>
                     <td>{{$subcategory->created_at}}</td>
                     <td>{{$subcategory->updated_at}}</td>
-                    <td>{{$subcategory->sub_authorid}}</td>
+                    <td>{{$user->getuser($subcategory->sub_authorid)->name}}</td>
                     <td style="text-align:center">
                         <!-- {{-- view single subcategory --}} -->
-                        <a href="{{route('subcategory.show', ['id'=> $subcategory->id])}}" class="view" data-toggle="tooltip" data-title="View subcategory"><i class="fa fa-eye" style="font-size:15px;"></i></a>&nbsp;&nbsp;
+                        <a href="{{route('subcategory.show', ['id'=> $subcategory->id])}}" class="view" data-toggle="tooltip" data-title="View subcategory"><i class="fa fa-eye" style="font-size:15px;"></i> View</a>&nbsp;&nbsp;
                         <!-- {{-- edit subcategory section --}} -->
-                        <a href="{{route('subcategory.edit', ['id'=>$subcategory->id])}}" class="view" data-title="Edit subcategory" data-toggle="tooltip"><i class="fa fa-edit" style="font-size:15px;"></i></a>&nbsp;
+                        <a href="{{route('subcategory.edit', ['id'=>$subcategory->id])}}" class="view" data-title="Edit subcategory" data-toggle="tooltip"><i class="fa fa-edit" style="font-size:15px;"></i> Edit</a>&nbsp;
                         <!-- {{--delete btn--}} -->
-                        <a class="btn  btn-sm" onclick="return confirm('Are you sure?')" href="{{route('subcategory.destroy', ['id'=>$subcategory->id])}}"><i class="fa fa-trash" style="color:red"></i></a>
+                        <a class="btn  btn-sm" onclick="return confirm('Are you sure?')" href="{{route('subcategory.destroy', ['id'=>$subcategory->id])}}"><i class="fa fa-trash" style="color:red"></i> Trash</a>
 
                     </td>
                 </tr>

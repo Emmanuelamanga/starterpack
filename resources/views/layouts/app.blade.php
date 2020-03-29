@@ -81,6 +81,8 @@
                         <a class="nav-link" href="{{route('subcategory.index')}}">{{ __('Sub-Category') }}</a>
                         <a class="nav-link" href="{{route('subcatitem.index')}}">{{ __('Sub-Category-Item') }}</a>
                         <a class="nav-link" href="{{route('materialgroup.index')}}">{{ __('Classroom') }}</a>
+                        <a class="nav-link" href="#">{{ __('User') }}</a>
+                        <a class="nav-link" href="#">{{ __('Stats') }}</a>
                         @elseif(Auth::user()->is_admin == 0)
                         <!-- user links -->
                         <a class="nav-link" href="{{route('home')}}">{{ __('Home') }}</a>
@@ -117,6 +119,8 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a href="#" class="dropdown-item">My Profile</a>
+                                <hr>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}

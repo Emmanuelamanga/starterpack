@@ -22,21 +22,21 @@
             </thead>
             <tbody>
                 @if(count($materialgroups) > 0 )
-                @foreach($materialgroups as $mg)
+                @foreach($materialgroups as $key => $mg)
                 <tr>
-                    <td>{{$mg->id}}</td>
+                    <td>{{$key+1}}</td>
                     <td>{{$mg->room_name}}</td>
                     <td>{{$mg->room_desc}}</td>
                     <td>{{$mg->created_at}}</td>
                     <td>{{$mg->updated_at}}</td>
-                    <td>{{$mg->room_authorid}}</td>
+                    <td>{{$user->getuser($mg->room_authorid)->name}}</td>
                     <td style="text-align:center">
                         <!-- {{-- view single mg --}} -->
-                        <a href="{{route('materialgroup.show', ['id'=>$mg->id])}}" class="view" data-toggle="tooltip" data-title="View materialgroup"><i class="fa fa-eye" style="font-size:15px;"></i></a>&nbsp;&nbsp;
+                        <a href="{{route('materialgroup.show', ['id'=>$mg->id])}}" class="view" data-toggle="tooltip" data-title="View materialgroup"><i class="fa fa-eye" style="font-size:15px;"></i> View</a>&nbsp;&nbsp;
                         <!-- {{-- edit materialgroup section --}} -->
-                        <a href="{{route('materialgroup.edit', ['id'=>$mg->id])}}" class="view" data-title="Edit materialgroup" data-toggle="tooltip"><i class="fa fa-edit" style="font-size:15px;"></i></a>&nbsp;
+                        <a href="{{route('materialgroup.edit', ['id'=>$mg->id])}}" class="view" data-title="Edit materialgroup" data-toggle="tooltip"><i class="fa fa-edit" style="font-size:15px;"></i> Edit</a>&nbsp;
                         <!-- {{--delete btn--}} -->
-                        <a class="btn  btn-sm" onclick="return confirm('Are you sure?')" href="{{route('materialgroup.destroy', ['id'=>$mg->id])}}"><i class="fa fa-trash" style="color:red"></i></a>
+                        <a class="btn  btn-sm" onclick="return confirm('Are you sure?')" href="{{route('materialgroup.destroy', ['id'=>$mg->id])}}"><i class="fa fa-trash" style="color:red"></i> Trash</a>
 
                     </td>
                 </tr>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\MaterialGroup;
+use App\User;
 use Illuminate\Http\Request;
 use Auth;
 use DB;
@@ -18,7 +19,8 @@ class MaterialGroupController extends Controller
     {
         $matg = MaterialGroup::all();
         return view('packages.materialgroups.index')
-            ->with('materialgroups', $matg);
+            ->with('materialgroups', $matg)
+            ->with('user', new User);
     }
 
     /**

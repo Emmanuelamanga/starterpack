@@ -65,7 +65,14 @@ class SubCatItemController extends Controller
 
       ]
     );
-
+    // confirm if there is an item for the request
+    $check = SubCatItem::where('catid', $request->cat)
+                        ->where('subcatid', $request->subcat)
+                        ->where('grpid', $request->grp)
+                        ->exists();
+    if ($check) {
+      return redirect()->back()->with('info', 'Subcategory has item already');
+    }
     // new subcatitem instance
     $subcatrec = new SubCatItem;
     // cache the file

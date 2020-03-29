@@ -8,6 +8,7 @@ use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\GetResource;
+use App\PackageCategory;
 use App\SubCatItem;
 
 class SearchController extends Controller
@@ -109,6 +110,8 @@ class SearchController extends Controller
 
         $items = SubCatItem::where('catid', $data['cat'])
             ->where('grpid', $data['grp'])
+            ->leftJoin('get_resources', 'sub_cat_items.subcatid', '!=' , 'get_resources.subcatitemid')
+            ->groupBy('sub_cat_items.subcatid')
             ->get();
         // dd($items);
         if (count($items) < 1) {
@@ -117,6 +120,7 @@ class SearchController extends Controller
 
         return view('packages.getresources.showitems')
             ->with('items', $items)
-            ->with('subcat', new PackageSubcategory);
+            ->with('subcat', new PackageSubcategory)
+            ->with('cat', new PackageCategory);
     }
 }
