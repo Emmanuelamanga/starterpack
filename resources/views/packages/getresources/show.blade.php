@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="card">
-    <div class="card-header text-center"><strong class="">Title :</strong> {{$subcat->getSubcategory($item->id)->sub_title ?? 'No Title'}} <strong>&nbsp;&nbsp; Description : </strong>{{$subcat->getSubcategory($item->id)->sub_desc ?? 'No Description'}}</div>
+    <div class="card-header text-center"><strong class="">Title :</strong> {{$subcat->getSubcategory($item->subcatitemid)->sub_title ?? 'No Title'}} <strong>&nbsp;&nbsp; Description : </strong>{{$subcat->getSubcategory($item->id)->sub_desc ?? 'No Description'}}</div>
     <div class="card-body">
         <!-- <table id="example" class="table table-bordered table-condensed table-striped">
             <thead>

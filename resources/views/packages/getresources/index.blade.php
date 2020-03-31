@@ -36,7 +36,7 @@
                     <td>{{$item->created_at}}</td>
                     <td>{{$item->updated_at}}</td>
                     <td style="text-align:center">
-                        <a href="{{route('getresource.show', ['id'=>$item->id])}}" class="view" data-toggle="tooltip" data-title="View getresource"><i class="fa fa-eye" style="font-size:15px;"></i>View</a>&nbsp;&nbsp;
+                        <a href="{{route('getresource.show', ['id'=>$item->subcatitemid])}}" class="view" data-toggle="tooltip" data-title="View getresource"><i class="fa fa-eye" style="font-size:15px;"></i>View</a>&nbsp;&nbsp;
                         <a class="btn  btn-sm" onclick="return confirm('Are you sure You want to DELETE this resourse ?')" href="{{route('getresource.destroy', ['id'=>$item->id])}}"><i class="fa fa-trash" style="color:red"></i>Trash</a>
                     </td>
                 </tr>

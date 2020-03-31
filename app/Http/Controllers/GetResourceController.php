@@ -111,12 +111,13 @@ class GetResourceController extends Controller
      */
     public function show($getResource)
     {
+        // dd($getResource);
         // $item = SubCatItem::where('id',$getResource)
         //                     ->where('deleted_at', NULL)
         //                     ->get();
         // dd($item->file_name->getClientOriginalExtension());
         $item = SubCatItem::find($getResource);
-
+        // dd($item);
         return view('packages.getresources.show')
             ->with('item', $item)
             ->with('subcat', new PackageSubcategory);
