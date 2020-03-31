@@ -71,6 +71,16 @@ Route::middleware(['is_admin','verified'])->group(function () {
 	Route::get('/creatematerialgroup','MaterialGroupController@create')->name('materialgroup.create');
 	Route::post('/storematerialgroup','MaterialGroupController@store')->name('materialgroup.store');
 	Route::post('/materialgroup/update/{id}','MaterialGroupController@update')->name('materialgroup.update');
+	// users routes 
+	// Route::resource('user', 'UserController');
+
+	Route::get('/user', 'UserController@index')->name('user.index');
+	Route::get('/user/{id}/edit','UserController@edit')->name('user.edit');
+	Route::get('/user/{id}','UserController@show')->name('user.show');
+	Route::get('/user/{id}/delete','UserController@destroy')->name('user.destroy');
+	Route::get('/createuser','UserController@create')->name('user.create');
+	Route::post('/storeuser','UserController@store')->name('user.store');
+	Route::post('/user/update/{id}','UserController@update')->name('user.update');
 });
 	// subcategoryitems routes
 	Route::get('searchresource', 'searchController@searchresource')->name('searchresource');

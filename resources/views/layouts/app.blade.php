@@ -75,13 +75,13 @@
                         @if (Auth::check())
                         @if (Auth::user()->is_admin == 1)
                         <!-- admin user links -->
-                        <a class="nav-link" href="{{route('home')}}">{{ __('Home') }}</a>
+                        <a class="nav-link" href="{{route('admin.home')}}">{{ __('Home') }}</a>
                         <!-- admin only links -->
                         <a class="nav-link" href="{{route('category.index')}}">{{ __('Category') }}</a>
                         <a class="nav-link" href="{{route('subcategory.index')}}">{{ __('Sub-Category') }}</a>
                         <a class="nav-link" href="{{route('subcatitem.index')}}">{{ __('Sub-Category-Item') }}</a>
                         <a class="nav-link" href="{{route('materialgroup.index')}}">{{ __('Classroom') }}</a>
-                        <a class="nav-link" href="#">{{ __('User') }}</a>
+                        <a class="nav-link" href="{{route('user.index')}}">{{ __('User') }}</a>
                         <a class="nav-link" href="#">{{ __('Stats') }}</a>
                         @elseif(Auth::user()->is_admin == 0)
                         <!-- user links -->
