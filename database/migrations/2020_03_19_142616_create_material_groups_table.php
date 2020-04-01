@@ -18,8 +18,9 @@ class CreateMaterialGroupsTable extends Migration
             $table->string('room_name');
             $table->string('room_desc');
             $table->string('room_authorid');
-           $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+            $table->timestamps();
+        //    $table->timestamp('created_at')->useCurrent();
+            // $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->softDeletes();
         });
     }
