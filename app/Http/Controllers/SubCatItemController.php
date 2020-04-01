@@ -84,11 +84,16 @@ class SubCatItemController extends Controller
     $subcatrec->catid = $request->cat;
     $subcatrec->grpid = $request->grp;
     $subcatrec->subcatid = $request->subcat;
-    $subcatrec->file_name =  $filename;
+    
     // store the file
     // $request->file('Item-' . time() . '.' . $file->getClientOriginalExtension())->store('public/materials/');
-    // save to storage/app/public/materials as the new $filename
-    $path = $file->storeAs('public/materials', $filename);
+    // save to storage/public/materials as the new $filename
+    // $path = $file->storeAs('public/materials', $filename); 
+     $path = Storage::put(
+        'materials/'.$filename,
+        file_get_contents($request->file('filename')->getRealPath())
+    );
+    $subcatrec->file_name =   $path.'/'.$filename;
     $subcatrec->authorid = Auth::user()->id;
     $subcatrec->save();
 
@@ -114,7 +119,6 @@ class SubCatItemController extends Controller
     //         ->withTrashed()
     //         ->get();
 
-    // dd($item);
     return view('packages.subcatitems.show')
       ->with('item', $item)
       ->with('subcat', new PackageSubcategory);

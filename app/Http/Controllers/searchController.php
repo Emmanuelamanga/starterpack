@@ -113,7 +113,7 @@ class SearchController extends Controller
             // ->leftJoin('get_resources', 'sub_cat_items.subcatid', '!=' , 'get_resources.subcatitemid')
             ->groupBy('sub_cat_items.subcatid')
             ->get();
-        dd($items);
+        // dd($items);
         if (count($items) < 1) {
             return redirect()->back()->with('info', 'Sorry No Items for that selection.');
         }

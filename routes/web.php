@@ -88,7 +88,7 @@ Route::middleware(['is_admin','verified'])->group(function () {
 	// getresource routes
 	// Route::resource('getresource', 'GetResourceController');
 	Route::get('/getresource', 'GetResourceController@index')->name('getresource.index');
-	Route::get('/getresource/{id}/edit','GetResourceController@edit')->name('getresource.edit');
+	// Route::get('/getresource/{id}/edit','GetResourceController@edit')->name('getresource.edit');
 	Route::get('/getresource/{id}','GetResourceController@show')->name('getresource.show');
 	Route::get('/getresource/{id}/delete','GetResourceController@destroy')->name('getresource.destroy');
 	Route::get('/creategetresource','GetResourceController@create')->name('getresource.create');

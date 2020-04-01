@@ -39,11 +39,11 @@
             </tbody>
         </table> -->
 
-        <object data="{{Storage::url('materials/'.$item->file_name)}}" style="border:1px solid #666CCC" margin="auto" ; height="1100" width="100%" type="application/pdf">
-            <!-- <embed src="{{asset('storage/materials/'.$item->file_name)}}" margin="auto" width="100%" height="1100"> </embed> -->
-            <iframe id="" style="border:1px solid #666CCC" title="PDF in an i-Frame" src="{{Storage::url('materials/'.$item->file_name)}}" frameborder="2" scrolling="auto" height="1100" width="100%"></iframe>
+        <!-- <object data="{{Storage::url('materials/'.$item->file_name)}}" style="border:1px solid #666CCC" margin="auto" ; height="1100" width="100%" type="application/pdf"> -->
+            <embed src="{{asset('storage/materials/'.$item->file_name)}}" margin="auto" width="100%" height="1100"> </embed>
+            <!-- <iframe id="" style="border:1px solid #666CCC" title="PDF in an i-Frame" src="{{Storage::url('materials/'.$item->file_name)}}" frameborder="2" scrolling="auto" height="1100" width="100%"></iframe> -->
 
-        </object>
+        <!-- </object> -->
 
         <!-- <iframe src ="{{ asset('storage/materials/Item-1584872190.pdf') }}" width="1000px" height="600px"></iframe> -->
         <!-- </object>  -->
