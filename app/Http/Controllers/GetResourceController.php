@@ -34,7 +34,7 @@ class GetResourceController extends Controller
     {
 
         $resource = DB::table('get_resources')
-            // ->select('id', 'subcatitemid', 'userid', 'created_at', 'updated_at', 'deleted_at')
+            ->select('id', 'subcatitemid', 'userid', 'created_at', 'updated_at', 'deleted_at')
             ->where('userid',  Auth::user()->id)
             ->where('deleted_at', NULL)
             ->groupBy('subcatitemid')
