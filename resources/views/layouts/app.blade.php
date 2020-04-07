@@ -46,6 +46,7 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
+          $.noConflict();
             var table = $('#myTable').DataTable();
 
             // $('#myTable tbody').on('click', 'tr', function () {
