@@ -37,25 +37,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {{--    <!-- Styles Scripts default-->--}}
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-<<<<<<< HEAD
 {{--    <!-- data tables -->--}}
 {{--    <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->--}}
-=======
- 
-    <!-- data tables -->
-    <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
->>>>>>> 2a779ba374dd3d8cdb89469581c22ba9be087649
+
+{{--    <!-- data tables -->--}}
+{{--    <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->--}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css" />
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function() {
-<<<<<<< HEAD
             $.noConflict();
-=======
-          $.noConflict();
->>>>>>> 2a779ba374dd3d8cdb89469581c22ba9be087649
             var table = $('#myTable').DataTable();
 
             // $('#myTable tbody').on('click', 'tr', function () {
