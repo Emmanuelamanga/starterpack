@@ -8,6 +8,12 @@
 
         $('#cat').on('change', function() {
             var query = $(this).val();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                }
+            });
+
             $.ajax({
 
                 url: "{{ route('search') }}",
