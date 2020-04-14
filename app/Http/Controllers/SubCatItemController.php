@@ -39,10 +39,10 @@ class SubCatItemController extends Controller
    */
   public function create()
   {
-    $result =  DB::table('package_subcategories')
-      ->leftJoin('sub_cat_items', 'sub_cat_items.subcatid','package_subcategories.id')
-      ->whereNull('sub_cat_items.catid')
-      ->get();
+    // $result =  DB::table('package_subcategories')
+    //   ->leftJoin('sub_cat_items', 'sub_cat_items.subcatid','package_subcategories.id')
+    //   ->whereNull('sub_cat_items.catid')
+    //   ->get();
 
     // dd($result);
 
