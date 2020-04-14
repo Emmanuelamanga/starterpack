@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\GetResource;
+use App\MaterialGroup;
 use App\SubCatItem;
 use Illuminate\Http\Request;
 use App\PackageCategory;
@@ -11,6 +12,7 @@ use App\User;
 use Auth;
 use Storage;
 use File;
+use DB;
 
 class SubCatItemController extends Controller
 {
@@ -37,9 +39,19 @@ class SubCatItemController extends Controller
    */
   public function create()
   {
+    $result =  DB::table('package_subcategories')
+      ->leftJoin('sub_cat_items', 'sub_cat_items.subcatid','package_subcategories.id')
+      ->whereNull('sub_cat_items.catid')
+      ->get();
+
+    // dd($result);
+
     return view('packages.subcatitems.create')
       ->with('categories', PackageCategory::all())
-      ->with('subcats', PackageSubcategory::all());
+      ->with('grps', MaterialGroup::all())
+      ->with('subcats', PackageSubcategory::all())
+      //  ->with('subcats', $result)
+       ;
   }
 
   /**
@@ -61,17 +73,17 @@ class SubCatItemController extends Controller
         'grp' => 'required',
         'subcat' => 'required',
         // 'desc'=>'required',
-        'filename' => 'required|file|mimes:pptx,pdf,doc,docx,xls,mp3,mp4,pub|max:6048'
+        'filename' => 'required|file|mimes:png,pptx,pdf,doc,docx,xls,mp3,mp4,pub|max:6048'
 
       ]
     );
     // confirm if there is an item for the request
     $check = SubCatItem::where('catid', $request->cat)
-                        ->where('subcatid', $request->subcat)
-                        ->where('grpid', $request->grp)
-                        ->exists();
+      ->where('subcatid', $request->subcat)
+      ->where('grpid', $request->grp)
+      ->exists();
     if ($check) {
-      return redirect()->back()->with('info', 'Subcategory has item already');
+      return redirect()->back()->with('info', 'Subcategory has an item already.');
     }
     // new subcatitem instance
     $subcatrec = new SubCatItem;
@@ -84,16 +96,16 @@ class SubCatItemController extends Controller
     $subcatrec->catid = $request->cat;
     $subcatrec->grpid = $request->grp;
     $subcatrec->subcatid = $request->subcat;
-    
+
     // store the file
     // $request->file('Item-' . time() . '.' . $file->getClientOriginalExtension())->store('public/materials/');
     // save to storage/public/materials as the new $filename
     // $path = $file->storeAs('public/materials', $filename); 
-     $path = Storage::put(
-        'materials/'.$filename,
-        file_get_contents($request->file('filename')->getRealPath())
+    $path = Storage::put(
+      'materials/' . $filename,
+      file_get_contents($request->file('filename')->getRealPath())
     );
-    $subcatrec->file_name =   $path.'/'.$filename;
+    $subcatrec->file_name =   $path . '/' . $filename;
     $subcatrec->authorid = Auth::user()->id;
     $subcatrec->save();
 
